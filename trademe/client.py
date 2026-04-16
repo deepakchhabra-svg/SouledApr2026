@@ -125,7 +125,7 @@ def post_feedback(feedback_id: int, comment: str, rating: str = "Positive") -> d
 # ---------------------------------------------------------------------------
 
 def get_watchlist(page: int = 1, rows: int = 50) -> dict:
-    return _get("/MyTradeMe/Watchlist.json", {"page": page, "rows": rows})
+    return _get("/MyTradeMe/Watchlist/All.json", {"page": page, "rows": rows})
 
 
 # ---------------------------------------------------------------------------

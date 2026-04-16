@@ -31,12 +31,12 @@ def get_oauth_session() -> OAuth1Session:
     )
 
 
-def start_oauth_flow(callback_url: str) -> str:
-    """Initiate OAuth flow, return the authorization URL."""
+def start_oauth_flow() -> str:
+    """Initiate OOB OAuth flow, return the TradeMe authorization URL."""
     oauth = OAuth1Session(
         config.TRADEME_CONSUMER_KEY,
         client_secret=config.TRADEME_CONSUMER_SECRET,
-        callback_uri=callback_url,
+        callback_uri="oob",
     )
     fetch_response = oauth.fetch_request_token(config.OAUTH_REQUEST_TOKEN_URL)
     _save_tokens({

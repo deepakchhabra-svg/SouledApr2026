@@ -54,27 +54,26 @@ def connect():
 
 @app.route("/connect/start")
 def connect_start():
-    callback = url_for("connect_callback", _external=True)
     try:
-        auth_url = auth.start_oauth_flow(callback)
-        return redirect(auth_url)
+        auth_url = auth.start_oauth_flow()
+        return render_template("connect_pin.html", auth_url=auth_url)
     except Exception as e:
         flash(f"Failed to start OAuth flow: {e}", "danger")
         return redirect(url_for("connect"))
 
 
-@app.route("/connect/callback")
-def connect_callback():
-    oauth_token = request.args.get("oauth_token")
-    oauth_verifier = request.args.get("oauth_verifier")
-    if not oauth_token or not oauth_verifier:
-        flash("OAuth callback missing parameters.", "danger")
+@app.route("/connect/pin", methods=["POST"])
+def connect_pin():
+    pin = request.form.get("pin", "").strip()
+    if not pin:
+        flash("Please enter the PIN from TradeMe.", "warning")
         return redirect(url_for("connect"))
     try:
-        auth.complete_oauth_flow(oauth_token, oauth_verifier)
+        auth.complete_oauth_flow(None, pin)
         flash("Successfully connected to TradeMe!", "success")
     except Exception as e:
         flash(f"OAuth failed: {e}", "danger")
+        return redirect(url_for("connect"))
     return redirect(url_for("dashboard"))
 
 

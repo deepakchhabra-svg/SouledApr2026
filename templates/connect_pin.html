@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block title %}Authorise TradeMe — TradeMe Store Manager{% endblock %}
+{% block content %}
+<div class="min-vh-100 d-flex align-items-center justify-content-center bg-light">
+  <div class="card shadow-lg" style="max-width:500px;width:100%">
+    <div class="card-body p-5 text-center">
+      <div class="mb-4">
+        <i class="bi bi-shield-lock display-1 text-primary"></i>
+      </div>
+      <h2 class="h4 fw-bold mb-1">Authorise with TradeMe</h2>
+      <p class="text-muted mb-4">Follow the two steps below to connect your account.</p>
+
+      <div class="text-start mb-4">
+        <div class="d-flex gap-3 mb-3">
+          <span class="badge bg-primary rounded-circle d-flex align-items-center justify-content-center"
+                style="width:28px;height:28px;flex-shrink:0">1</span>
+          <div>
+            <p class="mb-1 fw-semibold">Click the button below to open TradeMe</p>
+            <a href="{{ auth_url }}" target="_blank" class="btn btn-primary">
+              <i class="bi bi-box-arrow-up-right me-2"></i>Authorise on TradeMe
+            </a>
+            <p class="text-muted small mt-2">Log in and click <strong>Allow</strong> — TradeMe will show you a PIN code.</p>
+          </div>
+        </div>
+
+        <div class="d-flex gap-3">
+          <span class="badge bg-primary rounded-circle d-flex align-items-center justify-content-center"
+                style="width:28px;height:28px;flex-shrink:0">2</span>
+          <div class="w-100">
+            <p class="mb-2 fw-semibold">Enter the PIN shown by TradeMe</p>
+            <form method="post" action="{{ url_for('connect_pin') }}">
+              <div class="input-group">
+                <input type="text" class="form-control form-control-lg text-center fw-bold"
+                       name="pin" placeholder="e.g. 123456" required
+                       autocomplete="off" style="letter-spacing:.25em">
+                <button class="btn btn-success" type="submit">
+                  <i class="bi bi-check-lg me-1"></i>Connect
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <a href="{{ url_for('connect') }}" class="btn btn-outline-secondary btn-sm">
+        <i class="bi bi-arrow-left me-1"></i>Cancel
+      </a>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -13,6 +13,23 @@
     </div>
   </div>
 
+  <!-- Date range filter -->
+  <form method="get" action="{{ url_for('orders') }}" class="d-flex flex-wrap gap-2 align-items-end mb-4">
+    <input type="hidden" name="status" value="{{ status }}">
+    <div>
+      <label class="form-label small fw-semibold mb-1">From</label>
+      <input type="date" class="form-control form-control-sm" name="date_from" value="{{ date_from }}">
+    </div>
+    <div>
+      <label class="form-label small fw-semibold mb-1">To</label>
+      <input type="date" class="form-control form-control-sm" name="date_to" value="{{ date_to }}">
+    </div>
+    <button class="btn btn-outline-primary btn-sm" type="submit">Filter</button>
+    {% if date_from or date_to %}
+    <a href="{{ url_for('orders', status=status) }}" class="btn btn-outline-secondary btn-sm">Clear dates</a>
+    {% endif %}
+  </form>
+
   <!-- Status filter tabs -->
   <ul class="nav nav-pills mb-4 flex-wrap gap-1">
     {% for s in statuses %}

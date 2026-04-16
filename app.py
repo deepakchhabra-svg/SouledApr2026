@@ -1,13 +1,46 @@
 """TradeMe Store Manager — main Flask application."""
 from flask import (
     Flask, render_template, redirect, url_for, request,
-    session, flash, send_file, jsonify,
+    session, flash, send_file, jsonify, Response,
 )
 import io
+import logging
+import queue
+import threading
+import time
 import config
 import trademe.auth as auth
 import trademe.client as tm
 import trademe.export as export_util
+
+# ---------------------------------------------------------------------------
+# Logging — write to file + in-memory queue for live /dev/logs stream
+# ---------------------------------------------------------------------------
+
+log_queue: queue.Queue = queue.Queue(maxsize=500)
+
+class QueueHandler(logging.Handler):
+    def emit(self, record):
+        try:
+            log_queue.put_nowait(self.format(record))
+        except queue.Full:
+            log_queue.get_nowait()
+            log_queue.put_nowait(self.format(record))
+
+_fmt = logging.Formatter("%(asctime)s %(levelname)-7s %(message)s", "%H:%M:%S")
+_qh = QueueHandler()
+_qh.setFormatter(_fmt)
+
+file_handler = logging.FileHandler("app.log")
+file_handler.setFormatter(_fmt)
+
+logging.getLogger().setLevel(logging.INFO)
+logging.getLogger().addHandler(_qh)
+logging.getLogger().addHandler(file_handler)
+
+# Also capture Werkzeug request logs
+logging.getLogger("werkzeug").addHandler(_qh)
+logging.getLogger("werkzeug").addHandler(file_handler)
 
 app = Flask(__name__)
 app.secret_key = config.SECRET_KEY
@@ -110,11 +143,17 @@ def orders():
     status = request.args.get("status", "All")
     page = int(request.args.get("page", 1))
     rows = int(request.args.get("rows", 25))
+    date_from = request.args.get("date_from", "")
+    date_to = request.args.get("date_to", "")
     try:
-        data = tm.get_sold_items(status, page, rows)
+        data = tm.get_sold_items(status, page, rows,
+                                 date_from=date_from or None,
+                                 date_to=date_to or None)
         items = data.get("List") or data.get("SoldItems") or []
         total = data.get("TotalCount", 0)
+        logging.info(f"Orders fetched: status={status} date_from={date_from} date_to={date_to} total={total}")
     except Exception as e:
+        logging.error(f"Orders error: {e}")
         flash(f"Error loading orders: {e}", "danger")
         items, total = [], 0
     statuses = [
@@ -129,6 +168,8 @@ def orders():
         rows=rows,
         status=status,
         statuses=statuses,
+        date_from=date_from,
+        date_to=date_to,
         total_pages=max(1, -(-total // rows)),
     )
 
@@ -386,6 +427,30 @@ def api_search_categories():
         return jsonify(data)
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+
+
+# ---------------------------------------------------------------------------
+# Dev tools — live log stream
+# ---------------------------------------------------------------------------
+
+@app.route("/dev/logs")
+def dev_logs():
+    return render_template("dev_logs.html")
+
+
+@app.route("/dev/logs/stream")
+def dev_logs_stream():
+    """Server-Sent Events stream of live log lines."""
+    def generate():
+        yield "data: [Log stream connected — watching live]\n\n"
+        while True:
+            try:
+                line = log_queue.get(timeout=15)
+                yield f"data: {line}\n\n"
+            except queue.Empty:
+                yield "data: [heartbeat]\n\n"
+    return Response(generate(), mimetype="text/event-stream",
+                    headers={"Cache-Control": "no-cache", "X-Accel-Buffering": "no"})
 
 
 if __name__ == "__main__":

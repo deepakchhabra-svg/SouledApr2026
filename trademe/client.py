@@ -40,15 +40,19 @@ def get_member_profile() -> dict:
 # Orders (sold items)
 # ---------------------------------------------------------------------------
 
-def get_sold_items(status: str = "All", page: int = 1, rows: int = 50) -> dict:
+def get_sold_items(status: str = "All", page: int = 1, rows: int = 50,
+                   date_from: str = None, date_to: str = None) -> dict:
     """
-    status options: All, SoldPendingPayment, SoldPendingFeedback,
-                    SoldWithFeedback, SoldAndPosted, SoldAndNotPosted
+    status: All, SoldPendingPayment, SoldPendingFeedback,
+            SoldWithFeedback, SoldAndPosted, SoldAndNotPosted
+    date_from / date_to: ISO format YYYY-MM-DD (TradeMe supports up to 3 years back)
     """
-    return _get(f"/MyTradeMe/SoldItems/{status}.json", {
-        "page": page,
-        "rows": rows,
-    })
+    params = {"page": page, "rows": rows}
+    if date_from:
+        params["dateFrom"] = date_from
+    if date_to:
+        params["dateTo"] = date_to
+    return _get(f"/MyTradeMe/SoldItems/{status}.json", params)
 
 
 def get_order_details(order_id: int) -> dict:

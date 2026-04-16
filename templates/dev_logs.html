@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block title %}Live Logs — TradeMe Dev{% endblock %}
+{% block content %}
+<div class="container-fluid">
+  <div class="d-flex align-items-center gap-3 mb-3">
+    <h2 class="fw-bold mb-0"><i class="bi bi-terminal me-2"></i>Live Logs</h2>
+    <span class="badge bg-success" id="status-badge">Connecting...</span>
+    <div class="ms-auto d-flex gap-2">
+      <button class="btn btn-outline-secondary btn-sm" onclick="logBox.innerHTML=''">Clear</button>
+      <a href="{{ url_for('dashboard') }}" class="btn btn-outline-primary btn-sm">Back to App</a>
+    </div>
+  </div>
+
+  <pre id="log-box"
+       style="background:#0d1117;color:#e6edf3;padding:1rem;border-radius:8px;
+              height:calc(100vh - 160px);overflow-y:auto;font-size:.8rem;
+              line-height:1.5;white-space:pre-wrap;word-break:break-all;"></pre>
+</div>
+{% endblock %}
+{% block scripts %}
+<script>
+const logBox = document.getElementById('log-box');
+const badge  = document.getElementById('status-badge');
+const es = new EventSource("{{ url_for('dev_logs_stream') }}");
+
+es.onopen = () => {
+  badge.className = 'badge bg-success';
+  badge.textContent = 'Live';
+};
+es.onerror = () => {
+  badge.className = 'badge bg-danger';
+  badge.textContent = 'Disconnected';
+};
+es.onmessage = (e) => {
+  const line = e.data;
+  if (line === '[heartbeat]') return;
+
+  let colour = '#e6edf3';
+  if (line.includes('ERROR'))   colour = '#ff7b72';
+  if (line.includes('WARNING')) colour = '#d29922';
+  if (line.includes('200') || line.includes('302')) colour = '#3fb950';
+  if (line.includes('404') || line.includes('400') || line.includes('500')) colour = '#ff7b72';
+
+  logBox.innerHTML += `<span style="color:${colour}">${escHtml(line)}</span>\n`;
+  logBox.scrollTop = logBox.scrollHeight;
+};
+
+function escHtml(s) {
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+</script>
+{% endblock %}

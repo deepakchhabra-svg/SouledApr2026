@@ -109,7 +109,7 @@ def post_answer(listing_id: int, question_id: int, answer: str) -> dict:
 # ---------------------------------------------------------------------------
 
 def get_pending_feedback(page: int = 1, rows: int = 50) -> dict:
-    return _get("/MyTradeMe/FeedbackPending.json", {"page": page, "rows": rows})
+    return _get("/MyTradeMe/Feedback/Pending.json", {"page": page, "rows": rows})
 
 
 def post_feedback(feedback_id: int, comment: str, rating: str = "Positive") -> dict:

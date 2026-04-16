@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+{% block title %}Feedback — TradeMe Store Manager{% endblock %}
+{% block content %}
+<div class="container-fluid">
+  <div class="d-flex align-items-center gap-3 mb-4">
+    <h2 class="fw-bold mb-0"><i class="bi bi-star me-2"></i>Pending Feedback</h2>
+    <span class="badge bg-secondary">{{ total }} pending</span>
+  </div>
+
+  {% if items %}
+  <div class="d-grid gap-3">
+    {% for item in items %}
+    <div class="card border-0 shadow-sm">
+      <div class="card-body">
+        <div class="d-flex justify-content-between align-items-start mb-3 flex-wrap gap-2">
+          <div>
+            <span class="fw-semibold">{{ item.Title or item.ListingTitle or 'Sale' }}</span>
+            <span class="text-muted small ms-2">
+              from <strong>{{ item.Nickname or item.BuyerNickname or '—' }}</strong>
+            </span>
+          </div>
+          <span class="text-muted small">{{ (item.Date or '')[:10] }}</span>
+        </div>
+
+        {% if item.Comment %}
+        <div class="border-start border-3 border-warning ps-3 mb-3">
+          <p class="mb-0 fst-italic">"{{ item.Comment }}"</p>
+          <p class="mb-0 small text-muted mt-1">Buyer's feedback</p>
+        </div>
+        {% endif %}
+
+        <form method="post" action="{{ url_for('feedback_post') }}">
+          <input type="hidden" name="feedback_id" value="{{ item.FeedbackId or item.Id }}">
+          <div class="row g-2 align-items-end">
+            <div class="col-md-2">
+              <label class="form-label small fw-semibold">Rating</label>
+              <select class="form-select form-select-sm" name="rating">
+                <option value="Positive">⭐ Positive</option>
+                <option value="Neutral">😐 Neutral</option>
+                <option value="Negative">👎 Negative</option>
+              </select>
+            </div>
+            <div class="col-md-8">
+              <label class="form-label small fw-semibold">Your comment</label>
+              <input type="text" class="form-control form-control-sm" name="comment"
+                     placeholder="Great buyer, fast payment, recommended!" required maxlength="80">
+            </div>
+            <div class="col-md-2">
+              <button class="btn btn-primary btn-sm w-100" type="submit">
+                <i class="bi bi-send me-1"></i>Post
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  {% if total_pages > 1 %}
+  <nav class="mt-4">
+    <ul class="pagination justify-content-center">
+      <li class="page-item {% if page == 1 %}disabled{% endif %}">
+        <a class="page-link" href="{{ url_for('feedback', page=page-1) }}">&laquo;</a>
+      </li>
+      {% for p in range([1, page-2]|max, [total_pages+1, page+3]|min) %}
+      <li class="page-item {% if p == page %}active{% endif %}">
+        <a class="page-link" href="{{ url_for('feedback', page=p) }}">{{ p }}</a>
+      </li>
+      {% endfor %}
+      <li class="page-item {% if page == total_pages %}disabled{% endif %}">
+        <a class="page-link" href="{{ url_for('feedback', page=page+1) }}">&raquo;</a>
+      </li>
+    </ul>
+  </nav>
+  {% endif %}
+
+  {% else %}
+  <div class="text-center py-5 text-muted">
+    <i class="bi bi-star display-4 mb-3 d-block"></i>
+    <p class="lead">No pending feedback to leave.</p>
+  </div>
+  {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+{% block title %}Listing {{ listing.ListingId }} — TradeMe Store Manager{% endblock %}
+{% block content %}
+<div class="container">
+  <a href="{{ url_for('listings') }}" class="btn btn-outline-secondary btn-sm mb-4">
+    <i class="bi bi-arrow-left me-1"></i>Back to Listings
+  </a>
+
+  <div class="d-flex align-items-start gap-3 mb-4 flex-wrap">
+    <div>
+      <h2 class="fw-bold mb-1">{{ listing.Title or 'Listing Detail' }}</h2>
+      <span class="text-muted small">ID: {{ listing.ListingId }}</span>
+    </div>
+    <div class="ms-auto d-flex gap-2 flex-wrap">
+      {% if listing.ListingStatus == 'Active' or not listing.ListingStatus %}
+      <form method="post" action="{{ url_for('listing_withdraw', listing_id=listing.ListingId) }}"
+            onsubmit="return confirm('Withdraw this listing?')">
+        <input type="hidden" name="reason" value="ListedInError">
+        <button class="btn btn-outline-danger btn-sm">
+          <i class="bi bi-x-circle me-1"></i>Withdraw
+        </button>
+      </form>
+      {% else %}
+      <form method="post" action="{{ url_for('listing_relist', listing_id=listing.ListingId) }}">
+        <button class="btn btn-outline-success btn-sm">
+          <i class="bi bi-arrow-repeat me-1"></i>Relist
+        </button>
+      </form>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="row g-4">
+    <div class="col-md-6">
+      <div class="card border-0 shadow-sm mb-4">
+        <div class="card-header bg-white fw-semibold">Pricing & Availability</div>
+        <div class="card-body">
+          <dl class="row mb-0">
+            <dt class="col-5">Buy Now Price</dt>
+            <dd class="col-7">{% if listing.BuyNowPrice %}${{ "%.2f"|format(listing.BuyNowPrice|float) }}{% else %}—{% endif %}</dd>
+            <dt class="col-5">Reserve Price</dt>
+            <dd class="col-7">{% if listing.ReservePrice %}${{ "%.2f"|format(listing.ReservePrice|float) }}{% else %}—{% endif %}</dd>
+            <dt class="col-5">Start Price</dt>
+            <dd class="col-7">{% if listing.StartPrice %}${{ "%.2f"|format(listing.StartPrice|float) }}{% else %}—{% endif %}</dd>
+            <dt class="col-5">Quantity</dt>
+            <dd class="col-7">{{ listing.Quantity or 1 }}</dd>
+            <dt class="col-5">Qty Sold</dt>
+            <dd class="col-7">{{ listing.QuantitySold or 0 }}</dd>
+            <dt class="col-5">Category</dt>
+            <dd class="col-7">{{ listing.Category or listing.CategoryName or '—' }}</dd>
+            <dt class="col-5">Condition</dt>
+            <dd class="col-7">{{ listing.IsBrandNew and 'Brand New' or 'Used' }}</dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="card border-0 shadow-sm mb-4">
+        <div class="card-header bg-white fw-semibold">Listing Stats</div>
+        <div class="card-body">
+          <dl class="row mb-0">
+            <dt class="col-5">Status</dt>
+            <dd class="col-7">{{ listing.ListingStatus or 'Active' }}</dd>
+            <dt class="col-5">Views</dt>
+            <dd class="col-7">{{ listing.ViewCount or 0 }}</dd>
+            <dt class="col-5">Watchers</dt>
+            <dd class="col-7">{{ listing.WatcherCount or 0 }}</dd>
+            <dt class="col-5">Start Date</dt>
+            <dd class="col-7">{{ (listing.StartDate or '')[:10] }}</dd>
+            <dt class="col-5">End Date</dt>
+            <dd class="col-7">{{ (listing.EndDate or '')[:10] }}</dd>
+            <dt class="col-5">Promoted</dt>
+            <dd class="col-7">{{ 'Yes' if listing.IsPromoted else 'No' }}</dd>
+          </dl>
+        </div>
+      </div>
+
+      {% if listing.ShippingOptions %}
+      <div class="card border-0 shadow-sm mb-4">
+        <div class="card-header bg-white fw-semibold">Shipping Options</div>
+        <div class="card-body">
+          <ul class="list-unstyled mb-0">
+            {% for opt in listing.ShippingOptions %}
+            <li class="mb-1">
+              <i class="bi bi-truck me-2 text-muted"></i>
+              {{ opt.Description or opt.Type or '—' }}
+              {% if opt.Price %}— ${{ "%.2f"|format(opt.Price|float) }}{% endif %}
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+      {% endif %}
+    </div>
+
+    {% if listing.Description %}
+    <div class="col-12">
+      <div class="card border-0 shadow-sm">
+        <div class="card-header bg-white fw-semibold">Description</div>
+        <div class="card-body listing-desc">{{ listing.Description }}</div>
+      </div>
+    </div>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

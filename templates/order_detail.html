@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+{% block title %}Order Detail — TradeMe Store Manager{% endblock %}
+{% block content %}
+<div class="container">
+  <a href="{{ url_for('orders') }}" class="btn btn-outline-secondary btn-sm mb-4">
+    <i class="bi bi-arrow-left me-1"></i>Back to Orders
+  </a>
+
+  <h2 class="fw-bold mb-4">
+    <i class="bi bi-bag-check me-2"></i>Order #{{ order.OrderId or order.PurchaseId or '—' }}
+  </h2>
+
+  <div class="row g-4">
+    <div class="col-md-6">
+      <div class="card border-0 shadow-sm mb-4">
+        <div class="card-header bg-white fw-semibold">Item Details</div>
+        <div class="card-body">
+          <dl class="row mb-0">
+            <dt class="col-5">Title</dt>
+            <dd class="col-7">{{ order.Title or '—' }}</dd>
+            <dt class="col-5">Listing ID</dt>
+            <dd class="col-7">{{ order.ListingId or '—' }}</dd>
+            <dt class="col-5">Quantity</dt>
+            <dd class="col-7">{{ order.QuantitySold or order.Quantity or 1 }}</dd>
+            <dt class="col-5">Buy Now Price</dt>
+            <dd class="col-7">${{ "%.2f"|format((order.BuyNowPrice or order.Price or 0)|float) }}</dd>
+            <dt class="col-5">Shipping</dt>
+            <dd class="col-7">${{ "%.2f"|format((order.ShippingCost or 0)|float) }}</dd>
+            <dt class="col-5">Total</dt>
+            <dd class="col-7 fw-bold">
+              ${{ "%.2f"|format(((order.BuyNowPrice or order.Price or 0)|float) + ((order.ShippingCost or 0)|float)) }}
+            </dd>
+            <dt class="col-5">Payment Method</dt>
+            <dd class="col-7">{{ order.PaymentMethod or '—' }}</dd>
+            <dt class="col-5">Paid</dt>
+            <dd class="col-7">
+              {% if order.IsPaid %}
+              <span class="badge bg-success">Yes</span>
+              {% else %}
+              <span class="badge bg-danger">No</span>
+              {% endif %}
+            </dd>
+            <dt class="col-5">Shipping Type</dt>
+            <dd class="col-7">{{ order.ShippingType or order.ShippingOption or '—' }}</dd>
+            <dt class="col-5">Sale Date</dt>
+            <dd class="col-7">{{ order.EndDate or order.SaleDate or '—' }}</dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="card border-0 shadow-sm mb-4">
+        <div class="card-header bg-white fw-semibold">Buyer Information</div>
+        <div class="card-body">
+          {% set buyer = order.Buyer or {} %}
+          <dl class="row mb-0">
+            <dt class="col-5">Username</dt>
+            <dd class="col-7">{{ buyer.get('Nickname', '') or order.BidderNickname or '—' }}</dd>
+            <dt class="col-5">Email</dt>
+            <dd class="col-7">
+              {% set email = buyer.get('Email', '') %}
+              {% if email %}
+              <a href="mailto:{{ email }}">{{ email }}</a>
+              {% else %}—{% endif %}
+            </dd>
+            <dt class="col-5">Phone</dt>
+            <dd class="col-7">{{ buyer.get('PhoneNumber', '') or '—' }}</dd>
+          </dl>
+        </div>
+      </div>
+
+      <div class="card border-0 shadow-sm mb-4">
+        <div class="card-header bg-white fw-semibold">Delivery Address</div>
+        <div class="card-body">
+          {% set addr = order.ShippingAddress or {} %}
+          {% if addr %}
+          <address class="mb-0">
+            <strong>{{ addr.get('Name', '') }}</strong><br>
+            {{ addr.get('Address', '') }}<br>
+            {{ addr.get('City', '') }} {{ addr.get('Postcode', '') }}<br>
+            {{ addr.get('Country', '') }}
+          </address>
+          {% else %}
+          <span class="text-muted">No delivery address on record.</span>
+          {% endif %}
+        </div>
+      </div>
+
+      {% if order.NoteToSeller %}
+      <div class="card border-0 shadow-sm">
+        <div class="card-header bg-white fw-semibold">Note from Buyer</div>
+        <div class="card-body">
+          <p class="mb-0 fst-italic">"{{ order.NoteToSeller }}"</p>
+        </div>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock %}

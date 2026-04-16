@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+{% block title %}Questions — TradeMe Store Manager{% endblock %}
+{% block content %}
+<div class="container-fluid">
+  <div class="d-flex align-items-center gap-3 mb-4">
+    <h2 class="fw-bold mb-0"><i class="bi bi-chat-dots me-2"></i>Questions</h2>
+    <span class="badge bg-secondary">{{ total }} total</span>
+  </div>
+
+  <ul class="nav nav-pills mb-4 gap-1">
+    <li class="nav-item">
+      <a class="nav-link {% if status == 'Unanswered' %}active{% endif %}"
+         href="{{ url_for('questions', status='Unanswered', page=1) }}">Unanswered</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link {% if status == 'All' %}active{% endif %}"
+         href="{{ url_for('questions', status='All', page=1) }}">All</a>
+    </li>
+  </ul>
+
+  {% if items %}
+  <div class="d-grid gap-3">
+    {% for item in items %}
+    <div class="card border-0 shadow-sm">
+      <div class="card-body">
+        <div class="d-flex flex-wrap justify-content-between align-items-start gap-2 mb-2">
+          <div>
+            <span class="fw-semibold">{{ item.Title or item.ListingTitle or 'Listing' }}</span>
+            <span class="text-muted small ms-2">#{{ item.ListingId or '—' }}</span>
+          </div>
+          <span class="text-muted small">{{ (item.Date or item.QuestionDate or '')[:10] }}</span>
+        </div>
+
+        <div class="border-start border-3 border-primary ps-3 mb-3">
+          <p class="mb-1 fw-semibold text-dark">
+            <i class="bi bi-person-circle me-1 text-muted"></i>{{ item.Nickname or item.BuyerNickname or 'Buyer' }}
+          </p>
+          <p class="mb-0">{{ item.Comment or item.Question or '—' }}</p>
+        </div>
+
+        {% if item.Answer %}
+        <div class="border-start border-3 border-success ps-3 mb-3 bg-success-subtle rounded-end p-2">
+          <p class="mb-1 fw-semibold text-success small"><i class="bi bi-check-circle me-1"></i>Your Answer</p>
+          <p class="mb-0 small">{{ item.Answer }}</p>
+        </div>
+        {% else %}
+        <form method="post" action="{{ url_for('question_answer') }}" class="mt-2">
+          <input type="hidden" name="listing_id" value="{{ item.ListingId }}">
+          <input type="hidden" name="question_id" value="{{ item.QuestionId or item.Id }}">
+          <div class="input-group">
+            <textarea class="form-control" name="answer" rows="2"
+                      placeholder="Type your answer..." required></textarea>
+            <button class="btn btn-primary" type="submit">
+              <i class="bi bi-send me-1"></i>Answer
+            </button>
+          </div>
+        </form>
+        {% endif %}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  {% if total_pages > 1 %}
+  <nav class="mt-4">
+    <ul class="pagination justify-content-center">
+      <li class="page-item {% if page == 1 %}disabled{% endif %}">
+        <a class="page-link" href="{{ url_for('questions', status=status, page=page-1) }}">&laquo;</a>
+      </li>
+      {% for p in range([1, page-2]|max, [total_pages+1, page+3]|min) %}
+      <li class="page-item {% if p == page %}active{% endif %}">
+        <a class="page-link" href="{{ url_for('questions', status=status, page=p) }}">{{ p }}</a>
+      </li>
+      {% endfor %}
+      <li class="page-item {% if page == total_pages %}disabled{% endif %}">
+        <a class="page-link" href="{{ url_for('questions', status=status, page=page+1) }}">&raquo;</a>
+      </li>
+    </ul>
+  </nav>
+  {% endif %}
+
+  {% else %}
+  <div class="text-center py-5 text-muted">
+    <i class="bi bi-chat-dots display-4 mb-3 d-block"></i>
+    <p class="lead">No {{ status.lower() }} questions.</p>
+  </div>
+  {% endif %}
+</div>
+{% endblock %}

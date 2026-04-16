@@ -1,0 +1,77 @@
+/* TradeMe Store Manager — custom styles */
+
+:root {
+  --tm-blue: #1A56DB;
+  --tm-blue-dark: #1546b8;
+}
+
+body {
+  background: #f8fafc;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* Navbar */
+.bg-tm-blue { background-color: var(--tm-blue) !important; }
+
+/* Stat cards */
+.stat-card {
+  transition: transform .15s ease, box-shadow .15s ease;
+  border-radius: 12px !important;
+}
+.stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,.1) !important;
+}
+
+.stat-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+}
+
+/* Cards */
+.card { border-radius: 12px !important; }
+.card-header {
+  border-radius: 12px 12px 0 0 !important;
+  padding: .875rem 1.25rem;
+}
+
+/* Tables */
+.table th { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; }
+.table td { font-size: .9rem; }
+
+/* Nav pills */
+.nav-pills .nav-link {
+  color: #374151;
+  font-size: .875rem;
+}
+.nav-pills .nav-link.active {
+  background-color: var(--tm-blue);
+}
+
+/* Pagination */
+.page-link { color: var(--tm-blue); }
+.page-item.active .page-link {
+  background-color: var(--tm-blue);
+  border-color: var(--tm-blue);
+}
+
+/* Listing description (may contain HTML from TradeMe) */
+.listing-desc img { max-width: 100%; }
+.listing-desc { overflow-wrap: break-word; }
+
+/* Connect page */
+.min-vh-100 { min-height: 100vh; }
+
+/* Responsive tweaks */
+@media (max-width: 767px) {
+  .display-6 { font-size: 1.75rem; }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: #f1f5f9; }
+::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }

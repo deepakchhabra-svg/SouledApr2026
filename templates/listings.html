@@ -1,0 +1,120 @@
+{% extends "base.html" %}
+{% block title %}Listings — TradeMe Store Manager{% endblock %}
+{% block content %}
+<div class="container-fluid">
+  <div class="d-flex flex-wrap align-items-center gap-3 mb-4">
+    <h2 class="fw-bold mb-0"><i class="bi bi-tags me-2"></i>Listings</h2>
+    <span class="badge bg-secondary">{{ total }} total</span>
+    <div class="ms-auto d-flex gap-2 flex-wrap">
+      <a href="{{ url_for('listings_export', status=status) }}" class="btn btn-success btn-sm">
+        <i class="bi bi-file-earmark-excel me-1"></i>Export to Excel
+      </a>
+      <a href="{{ url_for('listing_new') }}" class="btn btn-primary btn-sm">
+        <i class="bi bi-plus-circle me-1"></i>New Listing
+      </a>
+    </div>
+  </div>
+
+  <ul class="nav nav-pills mb-4 flex-wrap gap-1">
+    {% for s in statuses %}
+    <li class="nav-item">
+      <a class="nav-link {% if status == s %}active{% endif %}"
+         href="{{ url_for('listings', status=s, page=1, rows=rows) }}">{{ s }}</a>
+    </li>
+    {% endfor %}
+  </ul>
+
+  {% if items %}
+  <div class="table-responsive card border-0 shadow-sm">
+    <table class="table table-hover align-middle mb-0">
+      <thead class="table-dark">
+        <tr>
+          <th>Listing ID</th>
+          <th>Title</th>
+          <th>Category</th>
+          <th class="text-end">Buy Now</th>
+          <th class="text-end">Reserve</th>
+          <th class="text-center">Qty</th>
+          <th class="text-center">Sold</th>
+          <th class="text-center">Views</th>
+          <th>Ends</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in items %}
+        <tr>
+          <td class="small text-muted">{{ item.ListingId or '—' }}</td>
+          <td style="max-width:240px">
+            <span class="fw-semibold">{{ item.Title or '—' }}</span>
+          </td>
+          <td class="small">{{ item.Category or '—' }}</td>
+          <td class="text-end">
+            {% if item.BuyNowPrice %}${{ "%.2f"|format(item.BuyNowPrice|float) }}{% else %}—{% endif %}
+          </td>
+          <td class="text-end">
+            {% if item.ReservePrice %}${{ "%.2f"|format(item.ReservePrice|float) }}{% else %}—{% endif %}
+          </td>
+          <td class="text-center">{{ item.Quantity or 1 }}</td>
+          <td class="text-center">{{ item.QuantitySold or 0 }}</td>
+          <td class="text-center">{{ item.ViewCount or 0 }}</td>
+          <td class="small text-muted">{{ (item.EndDate or '')[:10] }}</td>
+          <td class="text-end">
+            <div class="d-flex gap-1 justify-content-end">
+              <a href="{{ url_for('listing_detail', listing_id=item.ListingId) }}"
+                 class="btn btn-outline-primary btn-sm">View</a>
+              {% if status == 'Active' %}
+              <form method="post"
+                    action="{{ url_for('listing_withdraw', listing_id=item.ListingId) }}"
+                    onsubmit="return confirm('Withdraw this listing?')">
+                <input type="hidden" name="reason" value="ListedInError">
+                <button class="btn btn-outline-danger btn-sm" type="submit">Withdraw</button>
+              </form>
+              {% elif status in ('Unsold', 'Expired') %}
+              <form method="post"
+                    action="{{ url_for('listing_relist', listing_id=item.ListingId) }}">
+                <button class="btn btn-outline-success btn-sm" type="submit">Relist</button>
+              </form>
+              {% endif %}
+            </div>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  {% if total_pages > 1 %}
+  <nav class="mt-4">
+    <ul class="pagination justify-content-center">
+      <li class="page-item {% if page == 1 %}disabled{% endif %}">
+        <a class="page-link"
+           href="{{ url_for('listings', status=status, page=page-1, rows=rows) }}">&laquo; Prev</a>
+      </li>
+      {% for p in range([1, page-2]|max, [total_pages+1, page+3]|min) %}
+      <li class="page-item {% if p == page %}active{% endif %}">
+        <a class="page-link"
+           href="{{ url_for('listings', status=status, page=p, rows=rows) }}">{{ p }}</a>
+      </li>
+      {% endfor %}
+      <li class="page-item {% if page == total_pages %}disabled{% endif %}">
+        <a class="page-link"
+           href="{{ url_for('listings', status=status, page=page+1, rows=rows) }}">Next &raquo;</a>
+      </li>
+    </ul>
+  </nav>
+  {% endif %}
+
+  {% else %}
+  <div class="text-center py-5 text-muted">
+    <i class="bi bi-tags display-4 mb-3 d-block"></i>
+    <p class="lead">No <strong>{{ status }}</strong> listings found.</p>
+    {% if status == 'Active' %}
+    <a href="{{ url_for('listing_new') }}" class="btn btn-primary mt-2">
+      <i class="bi bi-plus-circle me-1"></i>Create Your First Listing
+    </a>
+    {% endif %}
+  </div>
+  {% endif %}
+</div>
+{% endblock %}

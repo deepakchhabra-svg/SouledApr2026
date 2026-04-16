@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+{% block title %}Dashboard — TradeMe Store Manager{% endblock %}
+{% block content %}
+<div class="container">
+  <div class="d-flex align-items-center mb-4">
+    <h2 class="fw-bold mb-0 me-3"><i class="bi bi-speedometer2 me-2"></i>Dashboard</h2>
+  </div>
+
+  <div class="row g-4 mb-5">
+    <div class="col-sm-6 col-xl-3">
+      <a href="{{ url_for('orders') }}" class="text-decoration-none">
+        <div class="card stat-card border-0 shadow-sm h-100">
+          <div class="card-body">
+            <div class="d-flex align-items-center justify-content-between mb-3">
+              <span class="stat-icon bg-primary-subtle text-primary">
+                <i class="bi bi-bag-check fs-4"></i>
+              </span>
+            </div>
+            <div class="display-6 fw-bold text-dark">{{ summary.total_sold or 0 }}</div>
+            <div class="text-muted mt-1">Total Sold</div>
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class="col-sm-6 col-xl-3">
+      <a href="{{ url_for('listings') }}" class="text-decoration-none">
+        <div class="card stat-card border-0 shadow-sm h-100">
+          <div class="card-body">
+            <div class="d-flex align-items-center justify-content-between mb-3">
+              <span class="stat-icon bg-success-subtle text-success">
+                <i class="bi bi-tags fs-4"></i>
+              </span>
+            </div>
+            <div class="display-6 fw-bold text-dark">{{ summary.active_listings or 0 }}</div>
+            <div class="text-muted mt-1">Active Listings</div>
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class="col-sm-6 col-xl-3">
+      <a href="{{ url_for('questions') }}" class="text-decoration-none">
+        <div class="card stat-card border-0 shadow-sm h-100">
+          <div class="card-body">
+            <div class="d-flex align-items-center justify-content-between mb-3">
+              <span class="stat-icon bg-warning-subtle text-warning">
+                <i class="bi bi-chat-dots fs-4"></i>
+              </span>
+              {% if summary.unanswered_questions %}
+              <span class="badge bg-warning text-dark rounded-pill">Action needed</span>
+              {% endif %}
+            </div>
+            <div class="display-6 fw-bold text-dark">{{ summary.unanswered_questions or 0 }}</div>
+            <div class="text-muted mt-1">Unanswered Questions</div>
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class="col-sm-6 col-xl-3">
+      <a href="{{ url_for('feedback') }}" class="text-decoration-none">
+        <div class="card stat-card border-0 shadow-sm h-100">
+          <div class="card-body">
+            <div class="d-flex align-items-center justify-content-between mb-3">
+              <span class="stat-icon bg-info-subtle text-info">
+                <i class="bi bi-star fs-4"></i>
+              </span>
+              {% if summary.pending_feedback %}
+              <span class="badge bg-info text-dark rounded-pill">Action needed</span>
+              {% endif %}
+            </div>
+            <div class="display-6 fw-bold text-dark">{{ summary.pending_feedback or 0 }}</div>
+            <div class="text-muted mt-1">Pending Feedback</div>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <div class="row g-4">
+    <div class="col-md-6">
+      <div class="card border-0 shadow-sm">
+        <div class="card-header bg-white fw-semibold border-bottom">
+          <i class="bi bi-lightning me-2 text-primary"></i>Quick Actions
+        </div>
+        <div class="card-body d-grid gap-2">
+          <a href="{{ url_for('orders') }}?status=SoldPendingPayment" class="btn btn-outline-danger">
+            <i class="bi bi-clock me-2"></i>Unpaid Orders
+          </a>
+          <a href="{{ url_for('orders') }}?status=SoldAndNotPosted" class="btn btn-outline-warning">
+            <i class="bi bi-box-seam me-2"></i>Orders Awaiting Dispatch
+          </a>
+          <a href="{{ url_for('orders') }}/export?status=SoldAndNotPosted" class="btn btn-outline-success">
+            <i class="bi bi-file-earmark-excel me-2"></i>Export Fulfillment Sheet
+          </a>
+          <a href="{{ url_for('listing_new') }}" class="btn btn-outline-primary">
+            <i class="bi bi-plus-circle me-2"></i>Create New Listing
+          </a>
+          <a href="{{ url_for('questions') }}" class="btn btn-outline-secondary">
+            <i class="bi bi-chat-dots me-2"></i>Answer Questions
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card border-0 shadow-sm">
+        <div class="card-header bg-white fw-semibold border-bottom">
+          <i class="bi bi-info-circle me-2 text-primary"></i>About This App
+        </div>
+        <div class="card-body">
+          <ul class="list-unstyled mb-0">
+            <li class="mb-2"><i class="bi bi-check-circle text-success me-2"></i>View &amp; filter all orders</li>
+            <li class="mb-2"><i class="bi bi-check-circle text-success me-2"></i>Export orders to Excel for fulfillment</li>
+            <li class="mb-2"><i class="bi bi-check-circle text-success me-2"></i>Manage active, unsold &amp; expired listings</li>
+            <li class="mb-2"><i class="bi bi-check-circle text-success me-2"></i>Create &amp; relist products</li>
+            <li class="mb-2"><i class="bi bi-check-circle text-success me-2"></i>Answer buyer questions inline</li>
+            <li class="mb-2"><i class="bi bi-check-circle text-success me-2"></i>Post buyer feedback</li>
+            <li class="mb-0"><i class="bi bi-check-circle text-success me-2"></i>Monitor your watchlist</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

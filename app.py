@@ -281,10 +281,9 @@ def listing_new():
 @app.route("/questions")
 @require_auth
 def questions():
-    status = request.args.get("status", "Unanswered")
     page = int(request.args.get("page", 1))
     try:
-        data = tm.get_all_questions(status, page=page, rows=25)
+        data = tm.get_all_questions(page=page, rows=25)
         items = data.get("List") or data.get("Questions") or []
         total = data.get("TotalCount", 0)
     except Exception as e:
@@ -295,7 +294,6 @@ def questions():
         items=items,
         total=total,
         page=page,
-        status=status,
         total_pages=max(1, -(-total // 25)),
     )
 

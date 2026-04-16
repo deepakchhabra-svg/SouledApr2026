@@ -7,16 +7,6 @@
     <span class="badge bg-secondary">{{ total }} total</span>
   </div>
 
-  <ul class="nav nav-pills mb-4 gap-1">
-    <li class="nav-item">
-      <a class="nav-link {% if status == 'Unanswered' %}active{% endif %}"
-         href="{{ url_for('questions', status='Unanswered', page=1) }}">Unanswered</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link {% if status == 'All' %}active{% endif %}"
-         href="{{ url_for('questions', status='All', page=1) }}">All</a>
-    </li>
-  </ul>
 
   {% if items %}
   <div class="d-grid gap-3">

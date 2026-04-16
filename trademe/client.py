@@ -93,13 +93,9 @@ def edit_listing(listing_id: int, payload: dict) -> dict:
 # Questions
 # ---------------------------------------------------------------------------
 
-def get_unsold_questions(page: int = 1, rows: int = 50) -> dict:
-    return _get("/MyTradeMe/UnansweredQuestions.json", {"page": page, "rows": rows})
-
-
-def get_all_questions(status: str = "Unanswered", page: int = 1, rows: int = 50) -> dict:
-    """status: Unanswered, All"""
-    return _get(f"/MyTradeMe/Questions/{status}.json", {"page": page, "rows": rows})
+def get_all_questions(status: str = "All", page: int = 1, rows: int = 50) -> dict:
+    """status: All (TradeMe doesn't expose a server-side unanswered filter)"""
+    return _get("/MyTradeMe/Questions/All.json", {"page": page, "rows": rows})
 
 
 def post_answer(listing_id: int, question_id: int, answer: str) -> dict:
@@ -154,15 +150,18 @@ def get_shipping_options() -> dict:
 # Summary / dashboard
 # ---------------------------------------------------------------------------
 
+def _safe_count(fn, *args, **kwargs) -> int:
+    try:
+        return fn(*args, **kwargs).get("TotalCount", 0)
+    except Exception:
+        return 0
+
+
 def get_dashboard_summary() -> dict:
     """Aggregate key counts for the dashboard."""
-    sold = get_sold_items("All", rows=1)
-    active = get_my_listings("Active", rows=1)
-    questions = get_all_questions("Unanswered", rows=1)
-    feedback = get_pending_feedback(rows=1)
     return {
-        "total_sold": sold.get("TotalCount", 0),
-        "active_listings": active.get("TotalCount", 0),
-        "unanswered_questions": questions.get("TotalCount", 0),
-        "pending_feedback": feedback.get("TotalCount", 0),
+        "total_sold": _safe_count(get_sold_items, "All", rows=1),
+        "active_listings": _safe_count(get_my_listings, "Active", rows=1),
+        "unanswered_questions": _safe_count(get_all_questions, rows=1),
+        "pending_feedback": _safe_count(get_pending_feedback, rows=1),
     }

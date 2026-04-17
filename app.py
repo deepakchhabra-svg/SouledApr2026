@@ -449,12 +449,13 @@ def dev_api_test():
     for name, fn in tests:
         try:
             data = fn()
-            results.append({
-                "name": name, "ok": True,
-                "keys": list(data.keys()) if isinstance(data, dict) else type(data).__name__,
-                "raw": json.dumps(data, indent=2)[:800],
-            })
+            keys = list(data.keys()) if isinstance(data, dict) else []
+            raw = json.dumps(data, indent=2)[:800]
+            logging.info(f"API_TEST OK  [{name}] keys={keys}")
+            logging.info(f"API_TEST RAW [{name}] {json.dumps(data)[:500]}")
+            results.append({"name": name, "ok": True, "keys": keys, "raw": raw})
         except Exception as e:
+            logging.error(f"API_TEST ERR [{name}] {e}")
             results.append({"name": name, "ok": False, "keys": [], "raw": str(e)})
     return render_template("dev_api_test.html", results=results)
 

@@ -124,3 +124,15 @@
 12:05:05 INFO    127.0.0.1 - - [17/Apr/2026 12:05:05] "GET /orders?status=All&page=1&rows=25 HTTP/1.1" 200 -
 12:05:05 INFO    127.0.0.1 - - [17/Apr/2026 12:05:05] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
 12:05:05 INFO    127.0.0.1 - - [17/Apr/2026 12:05:05] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+12:05:28 INFO    127.0.0.1 - - [17/Apr/2026 12:05:28] "GET /questions HTTP/1.1" 200 -
+12:05:28 INFO    127.0.0.1 - - [17/Apr/2026 12:05:28] "GET /questions HTTP/1.1" 200 -
+12:05:29 INFO    127.0.0.1 - - [17/Apr/2026 12:05:29] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+12:05:29 INFO    127.0.0.1 - - [17/Apr/2026 12:05:29] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+12:06:43 INFO     * Detected change in 'C:\\Users\\deepak.chhabra\\SouledApr2026\\app.py', reloading
+12:06:43 INFO     * Detected change in 'C:\\Users\\deepak.chhabra\\SouledApr2026\\app.py', reloading
+12:06:43 INFO     * Detected change in 'C:\\Users\\deepak.chhabra\\SouledApr2026\\app.py', reloading
+12:06:43 INFO     * Detected change in 'C:\\Users\\deepak.chhabra\\SouledApr2026\\app.py', reloading
+12:06:43 INFO     * Detected change in 'C:\\Users\\deepak.chhabra\\SouledApr2026\\app.py', reloading
+12:06:43 INFO     * Detected change in 'C:\\Users\\deepak.chhabra\\SouledApr2026\\app.py', reloading
+12:06:44 INFO     * Restarting with watchdog (windowsapi)
+12:06:44 INFO     * Restarting with watchdog (windowsapi)

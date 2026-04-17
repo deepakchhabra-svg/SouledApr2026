@@ -50,3 +50,9 @@
 12:02:58 INFO     * Detected change in 'C:\\Users\\deepak.chhabra\\SouledApr2026\\trademe\\client.py', reloading
 12:02:58 INFO     * Detected change in 'C:\\Users\\deepak.chhabra\\SouledApr2026\\trademe\\client.py', reloading
 12:02:58 INFO     * Detected change in 'C:\\Users\\deepak.chhabra\\SouledApr2026\\trademe\\client.py', reloading
+12:03:02 WARNING  * Debugger is active!
+12:03:02 WARNING  * Debugger is active!
+12:03:02 INFO     * Debugger PIN: 887-292-231
+12:03:02 INFO     * Debugger PIN: 887-292-231
+12:03:02 INFO    127.0.0.1 - - [17/Apr/2026 12:03:02] "GET /dev/logs/stream HTTP/1.1" 200 -
+12:03:02 INFO    127.0.0.1 - - [17/Apr/2026 12:03:02] "GET /dev/logs/stream HTTP/1.1" 200 -

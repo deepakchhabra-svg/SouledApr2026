@@ -1,5 +1,6 @@
 .env
 .trademe_tokens.json
+# app.log is intentionally NOT ignored — dev.py pushes it to dev-logs branch
 __pycache__/
 *.pyc
 *.pyo

@@ -98,8 +98,7 @@ def edit_listing(listing_id: int, payload: dict) -> dict:
 # ---------------------------------------------------------------------------
 
 def get_all_questions(status: str = "All", page: int = 1, rows: int = 50) -> dict:
-    """status: All (TradeMe doesn't expose a server-side unanswered filter)"""
-    return _get("/MyTradeMe/Questions/All.json", {"page": page, "rows": rows})
+    return _get("/MyTradeMe/Questions/Unsold.json", {"page": page, "rows": rows})
 
 
 def post_answer(listing_id: int, question_id: int, answer: str) -> dict:
@@ -113,7 +112,7 @@ def post_answer(listing_id: int, question_id: int, answer: str) -> dict:
 # ---------------------------------------------------------------------------
 
 def get_pending_feedback(page: int = 1, rows: int = 50) -> dict:
-    return _get("/MyTradeMe/Feedback/Pending.json", {"page": page, "rows": rows})
+    return _get("/MyTradeMe/Feedback/ForSeller.json", {"page": page, "rows": rows})
 
 
 def post_feedback(feedback_id: int, comment: str, rating: str = "Positive") -> dict:

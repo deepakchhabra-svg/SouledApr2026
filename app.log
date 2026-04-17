@@ -56,3 +56,35 @@
 12:03:02 INFO     * Debugger PIN: 887-292-231
 12:03:02 INFO    127.0.0.1 - - [17/Apr/2026 12:03:02] "GET /dev/logs/stream HTTP/1.1" 200 -
 12:03:02 INFO    127.0.0.1 - - [17/Apr/2026 12:03:02] "GET /dev/logs/stream HTTP/1.1" 200 -
+12:03:39 INFO    [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+12:03:39 INFO    [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+12:03:39 INFO    [33mPress CTRL+C to quit[0m
+12:03:39 INFO    [33mPress CTRL+C to quit[0m
+12:03:39 INFO     * Restarting with watchdog (windowsapi)
+12:03:39 INFO     * Restarting with watchdog (windowsapi)
+12:03:41 WARNING  * Debugger is active!
+12:03:41 WARNING  * Debugger is active!
+12:03:41 INFO     * Debugger PIN: 887-292-231
+12:03:41 INFO     * Debugger PIN: 887-292-231
+12:03:41 INFO    127.0.0.1 - - [17/Apr/2026 12:03:41] "GET /dev/logs/stream HTTP/1.1" 200 -
+12:03:41 INFO    127.0.0.1 - - [17/Apr/2026 12:03:41] "GET /dev/logs/stream HTTP/1.1" 200 -
+12:03:59 INFO    127.0.0.1 - - [17/Apr/2026 12:03:59] "GET /feedback HTTP/1.1" 200 -
+12:03:59 INFO    127.0.0.1 - - [17/Apr/2026 12:03:59] "GET /feedback HTTP/1.1" 200 -
+12:03:59 INFO    127.0.0.1 - - [17/Apr/2026 12:03:59] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+12:03:59 INFO    127.0.0.1 - - [17/Apr/2026 12:03:59] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+12:04:02 INFO    127.0.0.1 - - [17/Apr/2026 12:04:02] "GET /questions HTTP/1.1" 200 -
+12:04:02 INFO    127.0.0.1 - - [17/Apr/2026 12:04:02] "GET /questions HTTP/1.1" 200 -
+12:04:03 INFO    127.0.0.1 - - [17/Apr/2026 12:04:03] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+12:04:03 INFO    127.0.0.1 - - [17/Apr/2026 12:04:03] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+12:04:04 INFO    127.0.0.1 - - [17/Apr/2026 12:04:04] "GET /questions HTTP/1.1" 200 -
+12:04:04 INFO    127.0.0.1 - - [17/Apr/2026 12:04:04] "GET /questions HTTP/1.1" 200 -
+12:04:05 INFO    127.0.0.1 - - [17/Apr/2026 12:04:05] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+12:04:05 INFO    127.0.0.1 - - [17/Apr/2026 12:04:05] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+12:04:40 INFO     * Detected change in 'C:\\Users\\deepak.chhabra\\SouledApr2026\\app.py', reloading
+12:04:40 INFO     * Detected change in 'C:\\Users\\deepak.chhabra\\SouledApr2026\\app.py', reloading
+12:04:40 INFO     * Detected change in 'C:\\Users\\deepak.chhabra\\SouledApr2026\\app.py', reloading
+12:04:40 INFO     * Detected change in 'C:\\Users\\deepak.chhabra\\SouledApr2026\\app.py', reloading
+12:04:40 INFO     * Detected change in 'C:\\Users\\deepak.chhabra\\SouledApr2026\\app.py', reloading
+12:04:40 INFO     * Detected change in 'C:\\Users\\deepak.chhabra\\SouledApr2026\\app.py', reloading

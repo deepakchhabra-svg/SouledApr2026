@@ -143,10 +143,13 @@ def dashboard():
 @app.route("/orders")
 @require_auth
 def orders():
+    from datetime import date, timedelta
     status = request.args.get("status", "All")
     page = int(request.args.get("page", 1))
     rows = int(request.args.get("rows", 25))
-    date_from = request.args.get("date_from", "")
+    # Default: last 2 years so historical sales show up
+    default_from = (date.today() - timedelta(days=730)).isoformat()
+    date_from = request.args.get("date_from", default_from)
     date_to = request.args.get("date_to", "")
     try:
         data = tm.get_sold_items(status, page, rows,

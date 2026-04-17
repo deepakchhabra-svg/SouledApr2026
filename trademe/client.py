@@ -98,7 +98,7 @@ def edit_listing(listing_id: int, payload: dict) -> dict:
 # ---------------------------------------------------------------------------
 
 def get_all_questions(status: str = "All", page: int = 1, rows: int = 50) -> dict:
-    return _get("/MyTradeMe/Questions/Unsold.json", {"page": page, "rows": rows})
+    return _get("/MyTradeMe/Questions.json", {"page": page, "rows": rows})
 
 
 def post_answer(listing_id: int, question_id: int, answer: str) -> dict:

@@ -456,3 +456,39 @@
 12:22:58 INFO     * Detected change in 'C:\\Users\\deepak.chhabra\\SouledApr2026\\app.py', reloading
 12:22:59 INFO     * Restarting with watchdog (windowsapi)
 12:22:59 INFO     * Restarting with watchdog (windowsapi)
+12:23:04 WARNING  * Debugger is active!
+12:23:04 WARNING  * Debugger is active!
+12:23:04 INFO     * Debugger PIN: 887-292-231
+12:23:04 INFO     * Debugger PIN: 887-292-231
+12:23:04 INFO    127.0.0.1 - - [17/Apr/2026 12:23:04] "GET /dev/logs/stream HTTP/1.1" 200 -
+12:23:04 INFO    127.0.0.1 - - [17/Apr/2026 12:23:04] "GET /dev/logs/stream HTTP/1.1" 200 -
+12:23:04 INFO    127.0.0.1 - - [17/Apr/2026 12:23:04] "GET /listings/new HTTP/1.1" 200 -
+12:23:04 INFO    127.0.0.1 - - [17/Apr/2026 12:23:04] "GET /listings/new HTTP/1.1" 200 -
+12:23:05 INFO    127.0.0.1 - - [17/Apr/2026 12:23:05] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+12:23:05 INFO    127.0.0.1 - - [17/Apr/2026 12:23:05] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+12:23:07 INFO    API_TEST OK  [SoldItems no dates] keys=['TotalCount', 'Page', 'PageSize', 'List']
+12:23:07 INFO    API_TEST RAW [SoldItems no dates] {"TotalCount": 0, "Page": 1, "PageSize": 0, "List": []}
+12:23:07 INFO    API_TEST OK  [SoldItems dateFrom] keys=['TotalCount', 'Page', 'PageSize', 'List']
+12:23:07 INFO    API_TEST RAW [SoldItems dateFrom] {"TotalCount": 0, "Page": 1, "PageSize": 0, "List": []}
+12:23:07 INFO    API_TEST OK  [SoldItems date_from] keys=['TotalCount', 'Page', 'PageSize', 'List']
+12:23:07 INFO    API_TEST RAW [SoldItems date_from] {"TotalCount": 0, "Page": 1, "PageSize": 0, "List": []}
+12:23:07 INFO    API_TEST OK  [SoldItems startDate] keys=['TotalCount', 'Page', 'PageSize', 'List']
+12:23:07 INFO    API_TEST RAW [SoldItems startDate] {"TotalCount": 0, "Page": 1, "PageSize": 0, "List": []}
+12:23:08 INFO    API_TEST OK  [SoldItems start_date] keys=['TotalCount', 'Page', 'PageSize', 'List']
+12:23:08 INFO    API_TEST RAW [SoldItems start_date] {"TotalCount": 0, "Page": 1, "PageSize": 0, "List": []}
+12:23:08 INFO    API_TEST OK  [SoldItems SoldWithFeedback] keys=['TotalCount', 'Page', 'PageSize', 'List']
+12:23:08 INFO    API_TEST RAW [SoldItems SoldWithFeedback] {"TotalCount": 0, "Page": 1, "PageSize": 0, "List": []}
+12:23:08 INFO    API_TEST OK  [SellingItems Active] keys=['TotalCount', 'Page', 'PageSize', 'List']
+12:23:08 INFO    API_TEST RAW [SellingItems Active] {"TotalCount": 0, "Page": 1, "PageSize": 0, "List": []}
+12:23:08 INFO    API_TEST OK  [SellingItems Sold] keys=['TotalCount', 'Page', 'PageSize', 'List']
+12:23:08 INFO    API_TEST RAW [SellingItems Sold] {"TotalCount": 0, "Page": 1, "PageSize": 0, "List": []}
+12:23:08 ERROR   API_TEST ERR [Questions Unanswered] 404 Client Error: Not Found for url: https://api.trademe.co.nz/v1/Listings/Questions/Unanswered.json?page=1&rows=3
+12:23:08 ERROR   API_TEST ERR [Feedback Seller] 404 Client Error: Not Found for url: https://api.trademe.co.nz/v1/MyTradeMe/Feedback/Seller.json?page=1&rows=3
+12:23:08 ERROR   API_TEST ERR [Feedback Placed] 404 Client Error: Not Found for url: https://api.trademe.co.nz/v1/MyTradeMe/Feedback/Placed.json?page=1&rows=3
+12:23:08 INFO    API_TEST OK  [Watchlist] keys=['TotalCount', 'Page', 'PageSize', 'List', 'FoundCategories']
+12:23:08 INFO    API_TEST RAW [Watchlist] {"TotalCount": 3, "Page": 1, "PageSize": 3, "List": [{"ListingId": 4542822380, "Title": "LOCATION, LIFESTYLE & MORE!", "Category": "0350-5748-3399-", "StartPrice": 0, "StartDate": "/Date(1706668867897)/", "EndDate": "/Date(1777291847737)/", "ListingLength": null, "AsAt": "/Date(1776385388579)/", "CategoryPath": "/Trade-Me-Property/Residential/For-Sale", "PictureHref": "https://trademe.tmcdn.co.nz/photoserver/thumb/2093324065.jpg", "PhotoId": 2093324065, "RegionId": 2, "Region": "Auckland", "Subu
+12:23:08 ERROR   API_TEST ERR [Member Profile] 404 Client Error: Not Found for url: https://api.trademe.co.nz/v1/MyTradeMe/Profile.json
+12:23:08 INFO    127.0.0.1 - - [17/Apr/2026 12:23:08] "GET /dev/api-test HTTP/1.1" 200 -
+12:23:08 INFO    127.0.0.1 - - [17/Apr/2026 12:23:08] "GET /dev/api-test HTTP/1.1" 200 -
+12:23:09 INFO    127.0.0.1 - - [17/Apr/2026 12:23:09] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+12:23:09 INFO    127.0.0.1 - - [17/Apr/2026 12:23:09] "[36mGET /static/style.css HTTP/1.1[0m" 304 -

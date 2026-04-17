@@ -161,3 +161,32 @@
 12:07:20 INFO    127.0.0.1 - - [17/Apr/2026 12:07:20] "GET /orders?status=All&date_from=&date_to= HTTP/1.1" 200 -
 12:07:20 INFO    127.0.0.1 - - [17/Apr/2026 12:07:20] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
 12:07:20 INFO    127.0.0.1 - - [17/Apr/2026 12:07:20] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+12:07:59 INFO    Orders fetched: status=All date_from=2022-04-01 date_to=2026-04-17 total=0
+12:07:59 INFO    127.0.0.1 - - [17/Apr/2026 12:07:59] "GET /orders?status=All&date_from=2022-04-01&date_to=2026-04-17 HTTP/1.1" 200 -
+12:07:59 INFO    127.0.0.1 - - [17/Apr/2026 12:07:59] "GET /orders?status=All&date_from=2022-04-01&date_to=2026-04-17 HTTP/1.1" 200 -
+12:07:59 INFO    127.0.0.1 - - [17/Apr/2026 12:07:59] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+12:07:59 INFO    127.0.0.1 - - [17/Apr/2026 12:07:59] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+12:08:12 INFO    Orders fetched: status=SoldPendingPayment date_from= date_to= total=0
+12:08:12 INFO    127.0.0.1 - - [17/Apr/2026 12:08:12] "GET /orders?status=SoldPendingPayment&page=1&rows=25 HTTP/1.1" 200 -
+12:08:12 INFO    127.0.0.1 - - [17/Apr/2026 12:08:12] "GET /orders?status=SoldPendingPayment&page=1&rows=25 HTTP/1.1" 200 -
+12:08:12 INFO    127.0.0.1 - - [17/Apr/2026 12:08:12] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+12:08:12 INFO    127.0.0.1 - - [17/Apr/2026 12:08:12] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+12:08:14 INFO    Orders fetched: status=All date_from= date_to= total=0
+12:08:14 INFO    127.0.0.1 - - [17/Apr/2026 12:08:14] "GET /orders?status=All&page=1&rows=25 HTTP/1.1" 200 -
+12:08:14 INFO    127.0.0.1 - - [17/Apr/2026 12:08:14] "GET /orders?status=All&page=1&rows=25 HTTP/1.1" 200 -
+12:08:14 INFO    127.0.0.1 - - [17/Apr/2026 12:08:14] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+12:08:14 INFO    127.0.0.1 - - [17/Apr/2026 12:08:14] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+12:09:24 INFO     * Detected change in 'C:\\Users\\deepak.chhabra\\SouledApr2026\\app.py', reloading
+12:09:24 INFO     * Detected change in 'C:\\Users\\deepak.chhabra\\SouledApr2026\\app.py', reloading
+12:09:24 INFO     * Detected change in 'C:\\Users\\deepak.chhabra\\SouledApr2026\\app.py', reloading
+12:09:24 INFO     * Detected change in 'C:\\Users\\deepak.chhabra\\SouledApr2026\\app.py', reloading
+12:09:24 INFO     * Detected change in 'C:\\Users\\deepak.chhabra\\SouledApr2026\\app.py', reloading
+12:09:24 INFO     * Detected change in 'C:\\Users\\deepak.chhabra\\SouledApr2026\\app.py', reloading
+12:09:24 INFO     * Detected change in 'C:\\Users\\deepak.chhabra\\SouledApr2026\\trademe\\client.py', reloading
+12:09:24 INFO     * Detected change in 'C:\\Users\\deepak.chhabra\\SouledApr2026\\trademe\\client.py', reloading
+12:09:24 INFO     * Detected change in 'C:\\Users\\deepak.chhabra\\SouledApr2026\\trademe\\client.py', reloading
+12:09:24 INFO     * Detected change in 'C:\\Users\\deepak.chhabra\\SouledApr2026\\trademe\\client.py', reloading
+12:09:24 INFO     * Detected change in 'C:\\Users\\deepak.chhabra\\SouledApr2026\\trademe\\client.py', reloading
+12:09:24 INFO     * Detected change in 'C:\\Users\\deepak.chhabra\\SouledApr2026\\trademe\\client.py', reloading
+12:09:24 INFO     * Restarting with watchdog (windowsapi)
+12:09:24 INFO     * Restarting with watchdog (windowsapi)

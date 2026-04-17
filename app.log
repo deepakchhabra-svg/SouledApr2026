@@ -301,3 +301,15 @@
 12:12:59 INFO     * Detected change in 'C:\\Users\\deepak.chhabra\\SouledApr2026\\test_api.py', reloading
 12:12:59 INFO     * Detected change in 'C:\\Users\\deepak.chhabra\\SouledApr2026\\test_api.py', reloading
 12:12:59 INFO     * Detected change in 'C:\\Users\\deepak.chhabra\\SouledApr2026\\test_api.py', reloading
+12:12:59 INFO     * Restarting with watchdog (windowsapi)
+12:12:59 INFO     * Restarting with watchdog (windowsapi)
+12:13:01 WARNING  * Debugger is active!
+12:13:01 WARNING  * Debugger is active!
+12:13:01 INFO     * Debugger PIN: 887-292-231
+12:13:01 INFO     * Debugger PIN: 887-292-231
+12:13:03 INFO    127.0.0.1 - - [17/Apr/2026 12:13:03] "GET /dev/logs/stream HTTP/1.1" 200 -
+12:13:03 INFO    127.0.0.1 - - [17/Apr/2026 12:13:03] "GET /dev/logs/stream HTTP/1.1" 200 -
+12:13:24 INFO    127.0.0.1 - - [17/Apr/2026 12:13:24] "GET /orders/export?status=SoldAndNotPosted HTTP/1.1" 200 -
+12:13:24 INFO    127.0.0.1 - - [17/Apr/2026 12:13:24] "GET /orders/export?status=SoldAndNotPosted HTTP/1.1" 200 -
+12:13:36 INFO    127.0.0.1 - - [17/Apr/2026 12:13:36] "GET /listings/new HTTP/1.1" 200 -
+12:13:36 INFO    127.0.0.1 - - [17/Apr/2026 12:13:36] "GET /listings/new HTTP/1.1" 200 -

@@ -390,3 +390,55 @@
 12:17:07 INFO    127.0.0.1 - - [17/Apr/2026 12:17:07] "GET /dev/api-test HTTP/1.1" 200 -
 12:17:07 INFO    127.0.0.1 - - [17/Apr/2026 12:17:07] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
 12:17:07 INFO    127.0.0.1 - - [17/Apr/2026 12:17:07] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+12:21:23 INFO    API_TEST OK  [Sold Items (All)] keys=['TotalCount', 'Page', 'PageSize', 'List']
+12:21:23 INFO    API_TEST RAW [Sold Items (All)] {"TotalCount": 0, "Page": 1, "PageSize": 0, "List": []}
+12:21:23 INFO    API_TEST OK  [Sold Items (Sold)] keys=['TotalCount', 'Page', 'PageSize', 'List']
+12:21:23 INFO    API_TEST RAW [Sold Items (Sold)] {"TotalCount": 0, "Page": 1, "PageSize": 0, "List": []}
+12:21:23 INFO    API_TEST OK  [My Listings (Active)] keys=['TotalCount', 'Page', 'PageSize', 'List']
+12:21:23 INFO    API_TEST RAW [My Listings (Active)] {"TotalCount": 0, "Page": 1, "PageSize": 0, "List": []}
+12:21:24 INFO    API_TEST OK  [My Listings (Sold)] keys=['TotalCount', 'Page', 'PageSize', 'List']
+12:21:24 INFO    API_TEST RAW [My Listings (Sold)] {"TotalCount": 0, "Page": 1, "PageSize": 0, "List": []}
+12:21:24 ERROR   API_TEST ERR [My Listings Alt] 404 Client Error: Not Found for url: https://api.trademe.co.nz/v1/MyTradeMe/MyListings.json?page=1&rows=3
+12:21:24 ERROR   API_TEST ERR [Sold Listings Alt] 404 Client Error: Not Found for url: https://api.trademe.co.nz/v1/MyTradeMe/SoldListings.json?page=1&rows=3
+12:21:24 ERROR   API_TEST ERR [Questions] 404 Client Error: Not Found for url: https://api.trademe.co.nz/v1/MyTradeMe/Questions.json?page=1&rows=3
+12:21:24 ERROR   API_TEST ERR [Feedback ForSeller] 404 Client Error: Not Found for url: https://api.trademe.co.nz/v1/MyTradeMe/Feedback/ForSeller.json?page=1&rows=3
+12:21:24 INFO    API_TEST OK  [Watchlist] keys=['TotalCount', 'Page', 'PageSize', 'List', 'FoundCategories']
+12:21:24 INFO    API_TEST RAW [Watchlist] {"TotalCount": 3, "Page": 1, "PageSize": 3, "List": [{"ListingId": 4542822380, "Title": "LOCATION, LIFESTYLE & MORE!", "Category": "0350-5748-3399-", "StartPrice": 0, "StartDate": "/Date(1706668867897)/", "EndDate": "/Date(1777291847737)/", "ListingLength": null, "AsAt": "/Date(1776385284458)/", "CategoryPath": "/Trade-Me-Property/Residential/For-Sale", "PictureHref": "https://trademe.tmcdn.co.nz/photoserver/thumb/2093324065.jpg", "PhotoId": 2093324065, "RegionId": 2, "Region": "Auckland", "Subu
+12:21:24 ERROR   API_TEST ERR [Member Profile] 404 Client Error: Not Found for url: https://api.trademe.co.nz/v1/Members/Me.json
+12:21:24 INFO    127.0.0.1 - - [17/Apr/2026 12:21:24] "GET /dev/api-test HTTP/1.1" 200 -
+12:21:24 INFO    127.0.0.1 - - [17/Apr/2026 12:21:24] "GET /dev/api-test HTTP/1.1" 200 -
+12:21:25 INFO    127.0.0.1 - - [17/Apr/2026 12:21:25] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+12:21:25 INFO    127.0.0.1 - - [17/Apr/2026 12:21:25] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+12:21:40 INFO    API_TEST OK  [Sold Items (All)] keys=['TotalCount', 'Page', 'PageSize', 'List']
+12:21:40 INFO    API_TEST RAW [Sold Items (All)] {"TotalCount": 0, "Page": 1, "PageSize": 0, "List": []}
+12:21:40 INFO    API_TEST OK  [Sold Items (Sold)] keys=['TotalCount', 'Page', 'PageSize', 'List']
+12:21:40 INFO    API_TEST RAW [Sold Items (Sold)] {"TotalCount": 0, "Page": 1, "PageSize": 0, "List": []}
+12:21:40 INFO    API_TEST OK  [My Listings (Active)] keys=['TotalCount', 'Page', 'PageSize', 'List']
+12:21:40 INFO    API_TEST RAW [My Listings (Active)] {"TotalCount": 0, "Page": 1, "PageSize": 0, "List": []}
+12:21:40 INFO    API_TEST OK  [My Listings (Sold)] keys=['TotalCount', 'Page', 'PageSize', 'List']
+12:21:40 INFO    API_TEST RAW [My Listings (Sold)] {"TotalCount": 0, "Page": 1, "PageSize": 0, "List": []}
+12:21:40 ERROR   API_TEST ERR [My Listings Alt] 404 Client Error: Not Found for url: https://api.trademe.co.nz/v1/MyTradeMe/MyListings.json?page=1&rows=3
+12:21:40 ERROR   API_TEST ERR [Sold Listings Alt] 404 Client Error: Not Found for url: https://api.trademe.co.nz/v1/MyTradeMe/SoldListings.json?page=1&rows=3
+12:21:40 ERROR   API_TEST ERR [Questions] 404 Client Error: Not Found for url: https://api.trademe.co.nz/v1/MyTradeMe/Questions.json?page=1&rows=3
+12:21:41 ERROR   API_TEST ERR [Feedback ForSeller] 404 Client Error: Not Found for url: https://api.trademe.co.nz/v1/MyTradeMe/Feedback/ForSeller.json?page=1&rows=3
+12:21:41 INFO    API_TEST OK  [Watchlist] keys=['TotalCount', 'Page', 'PageSize', 'List', 'FoundCategories']
+12:21:41 INFO    API_TEST RAW [Watchlist] {"TotalCount": 3, "Page": 1, "PageSize": 3, "List": [{"ListingId": 4542822380, "Title": "LOCATION, LIFESTYLE & MORE!", "Category": "0350-5748-3399-", "StartPrice": 0, "StartDate": "/Date(1706668867897)/", "EndDate": "/Date(1777291847737)/", "ListingLength": null, "AsAt": "/Date(1776385301007)/", "CategoryPath": "/Trade-Me-Property/Residential/For-Sale", "PictureHref": "https://trademe.tmcdn.co.nz/photoserver/thumb/2093324065.jpg", "PhotoId": 2093324065, "RegionId": 2, "Region": "Auckland", "Subu
+12:21:41 ERROR   API_TEST ERR [Member Profile] 404 Client Error: Not Found for url: https://api.trademe.co.nz/v1/Members/Me.json
+12:21:41 INFO    127.0.0.1 - - [17/Apr/2026 12:21:41] "GET /dev/api-test HTTP/1.1" 200 -
+12:21:41 INFO    127.0.0.1 - - [17/Apr/2026 12:21:41] "GET /dev/api-test HTTP/1.1" 200 -
+12:21:41 INFO    127.0.0.1 - - [17/Apr/2026 12:21:41] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+12:21:41 INFO    127.0.0.1 - - [17/Apr/2026 12:21:41] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+12:21:51 INFO     * Detected change in 'C:\\Users\\deepak.chhabra\\SouledApr2026\\app.py', reloading
+12:21:51 INFO     * Detected change in 'C:\\Users\\deepak.chhabra\\SouledApr2026\\app.py', reloading
+12:21:51 INFO     * Detected change in 'C:\\Users\\deepak.chhabra\\SouledApr2026\\app.py', reloading
+12:21:51 INFO     * Detected change in 'C:\\Users\\deepak.chhabra\\SouledApr2026\\app.py', reloading
+12:21:51 INFO     * Detected change in 'C:\\Users\\deepak.chhabra\\SouledApr2026\\app.py', reloading
+12:21:51 INFO     * Detected change in 'C:\\Users\\deepak.chhabra\\SouledApr2026\\app.py', reloading
+12:21:51 INFO     * Detected change in 'C:\\Users\\deepak.chhabra\\SouledApr2026\\trademe\\client.py', reloading
+12:21:51 INFO     * Detected change in 'C:\\Users\\deepak.chhabra\\SouledApr2026\\trademe\\client.py', reloading
+12:21:51 INFO     * Detected change in 'C:\\Users\\deepak.chhabra\\SouledApr2026\\trademe\\client.py', reloading
+12:21:51 INFO     * Detected change in 'C:\\Users\\deepak.chhabra\\SouledApr2026\\trademe\\client.py', reloading
+12:21:51 INFO     * Detected change in 'C:\\Users\\deepak.chhabra\\SouledApr2026\\trademe\\client.py', reloading
+12:21:51 INFO     * Detected change in 'C:\\Users\\deepak.chhabra\\SouledApr2026\\trademe\\client.py', reloading
+12:21:52 INFO     * Restarting with watchdog (windowsapi)
+12:21:52 INFO     * Restarting with watchdog (windowsapi)

@@ -34,13 +34,16 @@ _qh.setFormatter(_fmt)
 file_handler = logging.FileHandler("app.log")
 file_handler.setFormatter(_fmt)
 
-logging.getLogger().setLevel(logging.INFO)
-logging.getLogger().addHandler(_qh)
-logging.getLogger().addHandler(file_handler)
+root = logging.getLogger()
+if not root.handlers:
+    root.setLevel(logging.INFO)
+    root.addHandler(_qh)
+    root.addHandler(file_handler)
 
-# Also capture Werkzeug request logs
-logging.getLogger("werkzeug").addHandler(_qh)
-logging.getLogger("werkzeug").addHandler(file_handler)
+wz = logging.getLogger("werkzeug")
+if not wz.handlers:
+    wz.addHandler(_qh)
+    wz.addHandler(file_handler)
 
 app = Flask(__name__)
 app.secret_key = config.SECRET_KEY

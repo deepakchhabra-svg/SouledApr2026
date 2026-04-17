@@ -38,7 +38,10 @@ def start_oauth_flow() -> str:
         client_secret=config.TRADEME_CONSUMER_SECRET,
         callback_uri="oob",
     )
-    fetch_response = oauth.fetch_request_token(config.OAUTH_REQUEST_TOKEN_URL)
+    fetch_response = oauth.fetch_request_token(
+        config.OAUTH_REQUEST_TOKEN_URL,
+        params={"scope": "MyTradeMeRead,MyTradeMeWrite"},
+    )
     _save_tokens({
         "request_token": fetch_response["oauth_token"],
         "request_token_secret": fetch_response["oauth_token_secret"],

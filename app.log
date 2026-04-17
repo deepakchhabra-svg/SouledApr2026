@@ -136,3 +136,18 @@
 12:06:43 INFO     * Detected change in 'C:\\Users\\deepak.chhabra\\SouledApr2026\\app.py', reloading
 12:06:44 INFO     * Restarting with watchdog (windowsapi)
 12:06:44 INFO     * Restarting with watchdog (windowsapi)
+12:06:47 WARNING  * Debugger is active!
+12:06:47 WARNING  * Debugger is active!
+12:06:47 INFO     * Debugger PIN: 887-292-231
+12:06:47 INFO     * Debugger PIN: 887-292-231
+12:06:47 INFO    127.0.0.1 - - [17/Apr/2026 12:06:47] "GET /dev/logs/stream HTTP/1.1" 200 -
+12:06:47 INFO    127.0.0.1 - - [17/Apr/2026 12:06:47] "GET /dev/logs/stream HTTP/1.1" 200 -
+12:07:09 ERROR   Questions error: 404 Client Error: Not Found for url: https://api.trademe.co.nz/v1/MyTradeMe/Questions/Unsold.json?page=1&rows=25
+12:07:09 INFO    127.0.0.1 - - [17/Apr/2026 12:07:09] "GET /questions HTTP/1.1" 200 -
+12:07:09 INFO    127.0.0.1 - - [17/Apr/2026 12:07:09] "GET /questions HTTP/1.1" 200 -
+12:07:09 INFO    127.0.0.1 - - [17/Apr/2026 12:07:09] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+12:07:09 INFO    127.0.0.1 - - [17/Apr/2026 12:07:09] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+12:07:14 INFO    127.0.0.1 - - [17/Apr/2026 12:07:14] "GET /dashboard HTTP/1.1" 200 -
+12:07:14 INFO    127.0.0.1 - - [17/Apr/2026 12:07:14] "GET /dashboard HTTP/1.1" 200 -
+12:07:14 INFO    127.0.0.1 - - [17/Apr/2026 12:07:14] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+12:07:14 INFO    127.0.0.1 - - [17/Apr/2026 12:07:14] "[36mGET /static/style.css HTTP/1.1[0m" 304 -

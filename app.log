@@ -536,3 +536,13 @@
 12:27:39 INFO     * Debugger PIN: 887-292-231
 12:27:39 INFO    127.0.0.1 - - [17/Apr/2026 12:27:39] "GET /dev/logs/stream HTTP/1.1" 200 -
 12:27:39 INFO    127.0.0.1 - - [17/Apr/2026 12:27:39] "GET /dev/logs/stream HTTP/1.1" 200 -
+12:39:37 INFO    127.0.0.1 - - [17/Apr/2026 12:39:37] "[32mGET /disconnect HTTP/1.1[0m" 302 -
+12:39:37 INFO    127.0.0.1 - - [17/Apr/2026 12:39:37] "[32mGET /disconnect HTTP/1.1[0m" 302 -
+12:39:37 INFO    127.0.0.1 - - [17/Apr/2026 12:39:37] "GET /connect HTTP/1.1" 200 -
+12:39:37 INFO    127.0.0.1 - - [17/Apr/2026 12:39:37] "GET /connect HTTP/1.1" 200 -
+12:39:38 INFO    127.0.0.1 - - [17/Apr/2026 12:39:38] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+12:39:38 INFO    127.0.0.1 - - [17/Apr/2026 12:39:38] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+12:39:40 INFO    127.0.0.1 - - [17/Apr/2026 12:39:40] "GET /connect/start HTTP/1.1" 200 -
+12:39:40 INFO    127.0.0.1 - - [17/Apr/2026 12:39:40] "GET /connect/start HTTP/1.1" 200 -
+12:39:40 INFO    127.0.0.1 - - [17/Apr/2026 12:39:40] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+12:39:40 INFO    127.0.0.1 - - [17/Apr/2026 12:39:40] "[36mGET /static/style.css HTTP/1.1[0m" 304 -

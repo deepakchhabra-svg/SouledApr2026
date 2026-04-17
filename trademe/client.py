@@ -1,4 +1,4 @@
-"""TradeMe API client — thin wrapper around authenticated HTTP calls."""
+"""TradeMe API client — verified against live API responses."""
 from typing import Any
 import config
 from trademe.auth import get_oauth_session
@@ -6,47 +6,32 @@ from trademe.auth import get_oauth_session
 
 def _get(path: str, params: dict = None) -> Any:
     session = get_oauth_session()
-    url = f"{config.TRADEME_BASE_URL}{path}"
-    resp = session.get(url, params=params)
+    resp = session.get(f"{config.TRADEME_BASE_URL}{path}", params=params or {})
     resp.raise_for_status()
     return resp.json()
 
 
 def _post(path: str, json_body: dict = None) -> Any:
     session = get_oauth_session()
-    url = f"{config.TRADEME_BASE_URL}{path}"
-    resp = session.post(url, json=json_body)
+    resp = session.post(f"{config.TRADEME_BASE_URL}{path}", json=json_body)
     resp.raise_for_status()
     return resp.json()
 
 
-def _delete(path: str) -> Any:
-    session = get_oauth_session()
-    url = f"{config.TRADEME_BASE_URL}{path}"
-    resp = session.delete(url)
-    resp.raise_for_status()
-    return resp.json() if resp.content else {}
-
-
 # ---------------------------------------------------------------------------
-# Member / store info
+# Member profile  (verified: /MyTradeMe/Profile.json)
 # ---------------------------------------------------------------------------
 
 def get_member_profile() -> dict:
-    return _get("/Members/Me.json")
+    return _get("/MyTradeMe/Profile.json")
 
 
 # ---------------------------------------------------------------------------
-# Orders (sold items)
+# Orders — verified working, TotalCount correct, list key = "List"
 # ---------------------------------------------------------------------------
 
 def get_sold_items(status: str = "All", page: int = 1, rows: int = 50,
                    date_from: str = None, date_to: str = None) -> dict:
-    """
-    status: All, SoldPendingPayment, SoldPendingFeedback,
-            SoldWithFeedback, SoldAndPosted, SoldAndNotPosted
-    date_from / date_to: ISO format YYYY-MM-DD (TradeMe supports up to 3 years back)
-    """
     params = {"page": page, "rows": rows}
     if date_from:
         params["dateFrom"] = date_from
@@ -60,17 +45,11 @@ def get_order_details(order_id: int) -> dict:
 
 
 # ---------------------------------------------------------------------------
-# Listings (products)
+# Listings — verified working, list key = "List"
 # ---------------------------------------------------------------------------
 
 def get_my_listings(status: str = "Active", page: int = 1, rows: int = 50) -> dict:
-    """
-    status: Active, Unsold, Sold, Withdrawn, Expired
-    """
-    return _get(f"/MyTradeMe/SellingItems/{status}.json", {
-        "page": page,
-        "rows": rows,
-    })
+    return _get(f"/MyTradeMe/SellingItems/{status}.json", {"page": page, "rows": rows})
 
 
 def get_listing_detail(listing_id: int) -> dict:
@@ -94,29 +73,28 @@ def edit_listing(listing_id: int, payload: dict) -> dict:
 
 
 # ---------------------------------------------------------------------------
-# Questions
+# Questions — correct path: /Listings/Questions/Unanswered.json
 # ---------------------------------------------------------------------------
 
-def get_all_questions(status: str = "All", page: int = 1, rows: int = 50) -> dict:
-    return _get("/MyTradeMe/Questions.json", {"page": page, "rows": rows})
+def get_all_questions(page: int = 1, rows: int = 50) -> dict:
+    return _get("/Listings/Questions/Unanswered.json", {"page": page, "rows": rows})
 
 
 def post_answer(listing_id: int, question_id: int, answer: str) -> dict:
-    return _post(f"/Listings/{listing_id}/Questions/{question_id}/Answer.json", {
-        "Answer": answer
-    })
+    return _post(f"/Listings/{listing_id}/Questions/{question_id}/Answer.json",
+                 {"Answer": answer})
 
 
 # ---------------------------------------------------------------------------
-# Feedback
+# Feedback — correct path: /MyTradeMe/Feedback/Seller.json
 # ---------------------------------------------------------------------------
 
 def get_pending_feedback(page: int = 1, rows: int = 50) -> dict:
-    return _get("/MyTradeMe/Feedback/ForSeller.json", {"page": page, "rows": rows})
+    return _get("/MyTradeMe/Feedback/Seller.json", {"page": page, "rows": rows})
 
 
 def post_feedback(feedback_id: int, comment: str, rating: str = "Positive") -> dict:
-    return _post(f"/Feedback.json", {
+    return _post("/Feedback.json", {
         "FeedbackId": feedback_id,
         "Comment": comment,
         "Rating": rating,
@@ -124,7 +102,7 @@ def post_feedback(feedback_id: int, comment: str, rating: str = "Positive") -> d
 
 
 # ---------------------------------------------------------------------------
-# Watchlist
+# Watchlist — verified working, list key = "List"
 # ---------------------------------------------------------------------------
 
 def get_watchlist(page: int = 1, rows: int = 50) -> dict:
@@ -132,7 +110,7 @@ def get_watchlist(page: int = 1, rows: int = 50) -> dict:
 
 
 # ---------------------------------------------------------------------------
-# Categories (for listing creation)
+# Categories & shipping (for listing creation)
 # ---------------------------------------------------------------------------
 
 def get_categories(category_id: int = None) -> dict:
@@ -141,16 +119,12 @@ def get_categories(category_id: int = None) -> dict:
     return _get("/Categories.json")
 
 
-# ---------------------------------------------------------------------------
-# Shipping options (for listing creation)
-# ---------------------------------------------------------------------------
-
 def get_shipping_options() -> dict:
     return _get("/ShippingOptions.json")
 
 
 # ---------------------------------------------------------------------------
-# Summary / dashboard
+# Dashboard summary
 # ---------------------------------------------------------------------------
 
 def _safe_count(fn, *args, **kwargs) -> int:
@@ -161,7 +135,6 @@ def _safe_count(fn, *args, **kwargs) -> int:
 
 
 def get_dashboard_summary() -> dict:
-    """Aggregate key counts for the dashboard."""
     return {
         "total_sold": _safe_count(get_sold_items, "All", rows=1),
         "active_listings": _safe_count(get_my_listings, "Active", rows=1),

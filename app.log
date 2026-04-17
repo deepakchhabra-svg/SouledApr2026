@@ -442,3 +442,17 @@
 12:21:51 INFO     * Detected change in 'C:\\Users\\deepak.chhabra\\SouledApr2026\\trademe\\client.py', reloading
 12:21:52 INFO     * Restarting with watchdog (windowsapi)
 12:21:52 INFO     * Restarting with watchdog (windowsapi)
+12:21:57 WARNING  * Debugger is active!
+12:21:57 WARNING  * Debugger is active!
+12:21:57 INFO     * Debugger PIN: 887-292-231
+12:21:57 INFO     * Debugger PIN: 887-292-231
+12:21:58 INFO    127.0.0.1 - - [17/Apr/2026 12:21:58] "GET /dev/logs/stream HTTP/1.1" 200 -
+12:21:58 INFO    127.0.0.1 - - [17/Apr/2026 12:21:58] "GET /dev/logs/stream HTTP/1.1" 200 -
+12:22:58 INFO     * Detected change in 'C:\\Users\\deepak.chhabra\\SouledApr2026\\app.py', reloading
+12:22:58 INFO     * Detected change in 'C:\\Users\\deepak.chhabra\\SouledApr2026\\app.py', reloading
+12:22:58 INFO     * Detected change in 'C:\\Users\\deepak.chhabra\\SouledApr2026\\app.py', reloading
+12:22:58 INFO     * Detected change in 'C:\\Users\\deepak.chhabra\\SouledApr2026\\app.py', reloading
+12:22:58 INFO     * Detected change in 'C:\\Users\\deepak.chhabra\\SouledApr2026\\app.py', reloading
+12:22:58 INFO     * Detected change in 'C:\\Users\\deepak.chhabra\\SouledApr2026\\app.py', reloading
+12:22:59 INFO     * Restarting with watchdog (windowsapi)
+12:22:59 INFO     * Restarting with watchdog (windowsapi)

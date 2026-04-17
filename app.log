@@ -281,3 +281,23 @@
 12:12:09 INFO     * Detected change in 'C:\\Users\\deepak.chhabra\\AppData\\Roaming\\Python\\Python312\\site-packages\\jinja2\\filters.py', reloading
 12:12:10 INFO     * Restarting with watchdog (windowsapi)
 12:12:10 INFO     * Restarting with watchdog (windowsapi)
+12:12:12 WARNING  * Debugger is active!
+12:12:12 WARNING  * Debugger is active!
+12:12:12 INFO     * Debugger PIN: 887-292-231
+12:12:12 INFO     * Debugger PIN: 887-292-231
+12:12:13 INFO    127.0.0.1 - - [17/Apr/2026 12:12:13] "GET /dev/logs/stream HTTP/1.1" 200 -
+12:12:13 INFO    127.0.0.1 - - [17/Apr/2026 12:12:13] "GET /dev/logs/stream HTTP/1.1" 200 -
+12:12:57 INFO    127.0.0.1 - - [17/Apr/2026 12:12:57] "[35m[1mGET /dev/api-test HTTP/1.1[0m" 500 -
+12:12:57 INFO    127.0.0.1 - - [17/Apr/2026 12:12:57] "[35m[1mGET /dev/api-test HTTP/1.1[0m" 500 -
+12:12:57 INFO    127.0.0.1 - - [17/Apr/2026 12:12:57] "GET /dev/api-test?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+12:12:57 INFO    127.0.0.1 - - [17/Apr/2026 12:12:57] "GET /dev/api-test?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+12:12:57 INFO    127.0.0.1 - - [17/Apr/2026 12:12:57] "GET /dev/api-test?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+12:12:57 INFO    127.0.0.1 - - [17/Apr/2026 12:12:57] "GET /dev/api-test?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+12:12:58 INFO    127.0.0.1 - - [17/Apr/2026 12:12:58] "GET /dev/api-test?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+12:12:58 INFO    127.0.0.1 - - [17/Apr/2026 12:12:58] "GET /dev/api-test?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+12:12:58 INFO    127.0.0.1 - - [17/Apr/2026 12:12:58] "[36mGET /dev/api-test?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+12:12:58 INFO    127.0.0.1 - - [17/Apr/2026 12:12:58] "[36mGET /dev/api-test?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+12:12:59 INFO     * Detected change in 'C:\\Users\\deepak.chhabra\\SouledApr2026\\test_api.py', reloading
+12:12:59 INFO     * Detected change in 'C:\\Users\\deepak.chhabra\\SouledApr2026\\test_api.py', reloading
+12:12:59 INFO     * Detected change in 'C:\\Users\\deepak.chhabra\\SouledApr2026\\test_api.py', reloading
+12:12:59 INFO     * Detected change in 'C:\\Users\\deepak.chhabra\\SouledApr2026\\test_api.py', reloading

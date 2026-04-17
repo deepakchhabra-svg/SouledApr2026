@@ -223,6 +223,7 @@ def listings():
         items = data.get("List") or data.get("SellingItems") or []
         total = data.get("TotalCount", 0)
     except Exception as e:
+        logging.error(f"Listings error: {e}")
         flash(f"Error loading listings: {e}", "danger")
         items, total = [], 0
     statuses = ["Active", "Unsold", "Sold", "Withdrawn", "Expired"]
@@ -331,6 +332,7 @@ def questions():
         items = data.get("List") or data.get("Questions") or []
         total = data.get("TotalCount", 0)
     except Exception as e:
+        logging.error(f"Questions error: {e}")
         flash(f"Error loading questions: {e}", "danger")
         items, total = [], 0
     return render_template(
@@ -369,6 +371,7 @@ def feedback():
         items = data.get("List") or data.get("FeedbackList") or []
         total = data.get("TotalCount", 0)
     except Exception as e:
+        logging.error(f"Feedback error: {e}")
         flash(f"Error loading feedback: {e}", "danger")
         items, total = [], 0
     return render_template(
@@ -407,6 +410,7 @@ def watchlist():
         items = data.get("List") or data.get("WatchlistItems") or []
         total = data.get("TotalCount", 0)
     except Exception as e:
+        logging.error(f"Watchlist error: {e}")
         flash(f"Error loading watchlist: {e}", "danger")
         items, total = [], 0
     return render_template(

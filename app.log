@@ -88,3 +88,39 @@
 12:04:40 INFO     * Detected change in 'C:\\Users\\deepak.chhabra\\SouledApr2026\\app.py', reloading
 12:04:40 INFO     * Detected change in 'C:\\Users\\deepak.chhabra\\SouledApr2026\\app.py', reloading
 12:04:40 INFO     * Detected change in 'C:\\Users\\deepak.chhabra\\SouledApr2026\\app.py', reloading
+12:04:41 INFO     * Restarting with watchdog (windowsapi)
+12:04:41 INFO     * Restarting with watchdog (windowsapi)
+12:04:43 WARNING  * Debugger is active!
+12:04:43 WARNING  * Debugger is active!
+12:04:43 INFO     * Debugger PIN: 887-292-231
+12:04:43 INFO     * Debugger PIN: 887-292-231
+12:04:44 INFO    127.0.0.1 - - [17/Apr/2026 12:04:44] "GET /dev/logs/stream HTTP/1.1" 200 -
+12:04:44 INFO    127.0.0.1 - - [17/Apr/2026 12:04:44] "GET /dev/logs/stream HTTP/1.1" 200 -
+12:04:52 INFO    127.0.0.1 - - [17/Apr/2026 12:04:52] "GET /dashboard HTTP/1.1" 200 -
+12:04:52 INFO    127.0.0.1 - - [17/Apr/2026 12:04:52] "GET /dashboard HTTP/1.1" 200 -
+12:04:52 INFO    127.0.0.1 - - [17/Apr/2026 12:04:52] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+12:04:52 INFO    127.0.0.1 - - [17/Apr/2026 12:04:52] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+12:04:54 INFO    127.0.0.1 - - [17/Apr/2026 12:04:54] "GET /dashboard HTTP/1.1" 200 -
+12:04:54 INFO    127.0.0.1 - - [17/Apr/2026 12:04:54] "GET /dashboard HTTP/1.1" 200 -
+12:04:54 INFO    127.0.0.1 - - [17/Apr/2026 12:04:54] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+12:04:54 INFO    127.0.0.1 - - [17/Apr/2026 12:04:54] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+12:04:55 INFO    Orders fetched: status=All date_from= date_to= total=0
+12:04:55 INFO    127.0.0.1 - - [17/Apr/2026 12:04:55] "GET /orders HTTP/1.1" 200 -
+12:04:55 INFO    127.0.0.1 - - [17/Apr/2026 12:04:55] "GET /orders HTTP/1.1" 200 -
+12:04:55 INFO    127.0.0.1 - - [17/Apr/2026 12:04:55] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+12:04:55 INFO    127.0.0.1 - - [17/Apr/2026 12:04:55] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+12:04:57 INFO    Orders fetched: status=SoldPendingPayment date_from= date_to= total=0
+12:04:57 INFO    127.0.0.1 - - [17/Apr/2026 12:04:57] "GET /orders?status=SoldPendingPayment&page=1&rows=25 HTTP/1.1" 200 -
+12:04:57 INFO    127.0.0.1 - - [17/Apr/2026 12:04:57] "GET /orders?status=SoldPendingPayment&page=1&rows=25 HTTP/1.1" 200 -
+12:04:58 INFO    127.0.0.1 - - [17/Apr/2026 12:04:58] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+12:04:58 INFO    127.0.0.1 - - [17/Apr/2026 12:04:58] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+12:04:59 INFO    Orders fetched: status=SoldPendingFeedback date_from= date_to= total=0
+12:04:59 INFO    127.0.0.1 - - [17/Apr/2026 12:04:59] "GET /orders?status=SoldPendingFeedback&page=1&rows=25 HTTP/1.1" 200 -
+12:04:59 INFO    127.0.0.1 - - [17/Apr/2026 12:04:59] "GET /orders?status=SoldPendingFeedback&page=1&rows=25 HTTP/1.1" 200 -
+12:05:00 INFO    127.0.0.1 - - [17/Apr/2026 12:05:00] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+12:05:00 INFO    127.0.0.1 - - [17/Apr/2026 12:05:00] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+12:05:05 INFO    Orders fetched: status=All date_from= date_to= total=0
+12:05:05 INFO    127.0.0.1 - - [17/Apr/2026 12:05:05] "GET /orders?status=All&page=1&rows=25 HTTP/1.1" 200 -
+12:05:05 INFO    127.0.0.1 - - [17/Apr/2026 12:05:05] "GET /orders?status=All&page=1&rows=25 HTTP/1.1" 200 -
+12:05:05 INFO    127.0.0.1 - - [17/Apr/2026 12:05:05] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+12:05:05 INFO    127.0.0.1 - - [17/Apr/2026 12:05:05] "[36mGET /static/style.css HTTP/1.1[0m" 304 -

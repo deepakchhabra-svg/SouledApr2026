@@ -226,3 +226,58 @@
 12:09:55 INFO    127.0.0.1 - - [17/Apr/2026 12:09:55] "GET /listings?status=Expired&page=1&rows=25 HTTP/1.1" 200 -
 12:09:55 INFO    127.0.0.1 - - [17/Apr/2026 12:09:55] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
 12:09:55 INFO    127.0.0.1 - - [17/Apr/2026 12:09:55] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+12:09:57 ERROR   Feedback error: 404 Client Error: Not Found for url: https://api.trademe.co.nz/v1/MyTradeMe/Feedback/ForSeller.json?page=1&rows=25
+12:09:57 INFO    127.0.0.1 - - [17/Apr/2026 12:09:57] "GET /feedback HTTP/1.1" 200 -
+12:09:57 INFO    127.0.0.1 - - [17/Apr/2026 12:09:57] "GET /feedback HTTP/1.1" 200 -
+12:09:57 INFO    127.0.0.1 - - [17/Apr/2026 12:09:57] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+12:09:57 INFO    127.0.0.1 - - [17/Apr/2026 12:09:57] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+12:09:59 ERROR   Questions error: 404 Client Error: Not Found for url: https://api.trademe.co.nz/v1/MyTradeMe/Questions.json?page=1&rows=25
+12:09:59 INFO    127.0.0.1 - - [17/Apr/2026 12:09:59] "GET /questions HTTP/1.1" 200 -
+12:09:59 INFO    127.0.0.1 - - [17/Apr/2026 12:09:59] "GET /questions HTTP/1.1" 200 -
+12:09:59 INFO    127.0.0.1 - - [17/Apr/2026 12:09:59] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+12:09:59 INFO    127.0.0.1 - - [17/Apr/2026 12:09:59] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+12:10:00 INFO    127.0.0.1 - - [17/Apr/2026 12:10:00] "GET /watchlist HTTP/1.1" 200 -
+12:10:00 INFO    127.0.0.1 - - [17/Apr/2026 12:10:00] "GET /watchlist HTTP/1.1" 200 -
+12:10:01 INFO    127.0.0.1 - - [17/Apr/2026 12:10:01] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+12:10:01 INFO    127.0.0.1 - - [17/Apr/2026 12:10:01] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+12:10:03 INFO    127.0.0.1 - - [17/Apr/2026 12:10:03] "GET /listings HTTP/1.1" 200 -
+12:10:03 INFO    127.0.0.1 - - [17/Apr/2026 12:10:03] "GET /listings HTTP/1.1" 200 -
+12:10:03 INFO    127.0.0.1 - - [17/Apr/2026 12:10:03] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+12:10:03 INFO    127.0.0.1 - - [17/Apr/2026 12:10:03] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+12:10:04 INFO    Orders fetched: status=All date_from=2024-04-17 date_to= total=0
+12:10:04 INFO    127.0.0.1 - - [17/Apr/2026 12:10:04] "GET /orders HTTP/1.1" 200 -
+12:10:04 INFO    127.0.0.1 - - [17/Apr/2026 12:10:04] "GET /orders HTTP/1.1" 200 -
+12:10:05 INFO    127.0.0.1 - - [17/Apr/2026 12:10:05] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+12:10:05 INFO    127.0.0.1 - - [17/Apr/2026 12:10:05] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+12:11:40 INFO     * Detected change in 'C:\\Users\\deepak.chhabra\\SouledApr2026\\app.py', reloading
+12:11:40 INFO     * Detected change in 'C:\\Users\\deepak.chhabra\\SouledApr2026\\app.py', reloading
+12:11:40 INFO     * Detected change in 'C:\\Users\\deepak.chhabra\\SouledApr2026\\app.py', reloading
+12:11:40 INFO     * Detected change in 'C:\\Users\\deepak.chhabra\\SouledApr2026\\app.py', reloading
+12:11:40 INFO     * Detected change in 'C:\\Users\\deepak.chhabra\\SouledApr2026\\app.py', reloading
+12:11:40 INFO     * Detected change in 'C:\\Users\\deepak.chhabra\\SouledApr2026\\app.py', reloading
+12:11:40 INFO     * Restarting with watchdog (windowsapi)
+12:11:40 INFO     * Restarting with watchdog (windowsapi)
+12:11:43 WARNING  * Debugger is active!
+12:11:43 WARNING  * Debugger is active!
+12:11:43 INFO     * Debugger PIN: 887-292-231
+12:11:43 INFO     * Debugger PIN: 887-292-231
+12:11:44 INFO    127.0.0.1 - - [17/Apr/2026 12:11:44] "GET /dev/logs/stream HTTP/1.1" 200 -
+12:11:44 INFO    127.0.0.1 - - [17/Apr/2026 12:11:44] "GET /dev/logs/stream HTTP/1.1" 200 -
+12:12:02 INFO    127.0.0.1 - - [17/Apr/2026 12:12:02] "GET /dashboard HTTP/1.1" 200 -
+12:12:02 INFO    127.0.0.1 - - [17/Apr/2026 12:12:02] "GET /dashboard HTTP/1.1" 200 -
+12:12:02 INFO    127.0.0.1 - - [17/Apr/2026 12:12:02] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+12:12:02 INFO    127.0.0.1 - - [17/Apr/2026 12:12:02] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+12:12:06 INFO     * Detected change in 'C:\\Users\\deepak.chhabra\\AppData\\Roaming\\Python\\Python312\\site-packages\\jinja2\\async_utils.py', reloading
+12:12:06 INFO     * Detected change in 'C:\\Users\\deepak.chhabra\\AppData\\Roaming\\Python\\Python312\\site-packages\\jinja2\\async_utils.py', reloading
+12:12:06 INFO     * Restarting with watchdog (windowsapi)
+12:12:06 INFO     * Restarting with watchdog (windowsapi)
+12:12:08 WARNING  * Debugger is active!
+12:12:08 WARNING  * Debugger is active!
+12:12:08 INFO     * Debugger PIN: 887-292-231
+12:12:08 INFO     * Debugger PIN: 887-292-231
+12:12:09 INFO    127.0.0.1 - - [17/Apr/2026 12:12:09] "GET /dev/logs/stream HTTP/1.1" 200 -
+12:12:09 INFO    127.0.0.1 - - [17/Apr/2026 12:12:09] "GET /dev/logs/stream HTTP/1.1" 200 -
+12:12:09 INFO     * Detected change in 'C:\\Users\\deepak.chhabra\\AppData\\Roaming\\Python\\Python312\\site-packages\\jinja2\\filters.py', reloading
+12:12:09 INFO     * Detected change in 'C:\\Users\\deepak.chhabra\\AppData\\Roaming\\Python\\Python312\\site-packages\\jinja2\\filters.py', reloading
+12:12:10 INFO     * Restarting with watchdog (windowsapi)
+12:12:10 INFO     * Restarting with watchdog (windowsapi)

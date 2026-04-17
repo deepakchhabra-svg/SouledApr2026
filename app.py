@@ -435,16 +435,15 @@ def dev_api_test():
     import json
     results = []
     tests = [
-        ("Sold Items (All)",        lambda: tm._get("/MyTradeMe/SoldItems/All.json", {"page": 1, "rows": 3})),
-        ("Sold Items (Sold)",       lambda: tm._get("/MyTradeMe/SoldItems/Sold.json", {"page": 1, "rows": 3})),
-        ("My Listings (Active)",    lambda: tm._get("/MyTradeMe/SellingItems/Active.json", {"page": 1, "rows": 3})),
-        ("My Listings (Sold)",      lambda: tm._get("/MyTradeMe/SellingItems/Sold.json", {"page": 1, "rows": 3})),
-        ("My Listings Alt",         lambda: tm._get("/MyTradeMe/MyListings.json", {"page": 1, "rows": 3})),
-        ("Sold Listings Alt",       lambda: tm._get("/MyTradeMe/SoldListings.json", {"page": 1, "rows": 3})),
-        ("Questions",               lambda: tm._get("/MyTradeMe/Questions.json", {"page": 1, "rows": 3})),
-        ("Feedback ForSeller",      lambda: tm._get("/MyTradeMe/Feedback/ForSeller.json", {"page": 1, "rows": 3})),
-        ("Watchlist",               lambda: tm._get("/MyTradeMe/Watchlist/All.json", {"page": 1, "rows": 3})),
-        ("Member Profile",          lambda: tm._get("/Members/Me.json")),
+        ("Sold Items (All)",              lambda: tm._get("/MyTradeMe/SoldItems/All.json", {"page": 1, "rows": 3})),
+        ("Sold Items (SoldWithFeedback)", lambda: tm._get("/MyTradeMe/SoldItems/SoldWithFeedback.json", {"page": 1, "rows": 3})),
+        ("My Listings (Active)",          lambda: tm._get("/MyTradeMe/SellingItems/Active.json", {"page": 1, "rows": 3})),
+        ("My Listings (Sold)",            lambda: tm._get("/MyTradeMe/SellingItems/Sold.json", {"page": 1, "rows": 3})),
+        ("Questions (Unanswered)",        lambda: tm._get("/Listings/Questions/Unanswered.json", {"page": 1, "rows": 3})),
+        ("Feedback (Seller)",             lambda: tm._get("/MyTradeMe/Feedback/Seller.json", {"page": 1, "rows": 3})),
+        ("Feedback (Placed)",             lambda: tm._get("/MyTradeMe/Feedback/Placed.json", {"page": 1, "rows": 3})),
+        ("Watchlist",                     lambda: tm._get("/MyTradeMe/Watchlist/All.json", {"page": 1, "rows": 3})),
+        ("Member Profile",                lambda: tm._get("/MyTradeMe/Profile.json")),
     ]
     for name, fn in tests:
         try:

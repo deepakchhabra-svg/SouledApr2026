@@ -426,6 +426,40 @@ def watchlist():
 
 
 # ---------------------------------------------------------------------------
+# Diagnostics — shows raw API responses so we can find correct field names
+# ---------------------------------------------------------------------------
+
+@app.route("/dev/api-test")
+@require_auth
+def dev_api_test():
+    import json
+    results = []
+    tests = [
+        ("Sold Items (All)",        lambda: tm._get("/MyTradeMe/SoldItems/All.json", {"page": 1, "rows": 3})),
+        ("Sold Items (Sold)",       lambda: tm._get("/MyTradeMe/SoldItems/Sold.json", {"page": 1, "rows": 3})),
+        ("My Listings (Active)",    lambda: tm._get("/MyTradeMe/SellingItems/Active.json", {"page": 1, "rows": 3})),
+        ("My Listings (Sold)",      lambda: tm._get("/MyTradeMe/SellingItems/Sold.json", {"page": 1, "rows": 3})),
+        ("My Listings Alt",         lambda: tm._get("/MyTradeMe/MyListings.json", {"page": 1, "rows": 3})),
+        ("Sold Listings Alt",       lambda: tm._get("/MyTradeMe/SoldListings.json", {"page": 1, "rows": 3})),
+        ("Questions",               lambda: tm._get("/MyTradeMe/Questions.json", {"page": 1, "rows": 3})),
+        ("Feedback ForSeller",      lambda: tm._get("/MyTradeMe/Feedback/ForSeller.json", {"page": 1, "rows": 3})),
+        ("Watchlist",               lambda: tm._get("/MyTradeMe/Watchlist/All.json", {"page": 1, "rows": 3})),
+        ("Member Profile",          lambda: tm._get("/Members/Me.json")),
+    ]
+    for name, fn in tests:
+        try:
+            data = fn()
+            results.append({
+                "name": name, "ok": True,
+                "keys": list(data.keys()) if isinstance(data, dict) else type(data).__name__,
+                "raw": json.dumps(data, indent=2)[:800],
+            })
+        except Exception as e:
+            results.append({"name": name, "ok": False, "keys": [], "raw": str(e)})
+    return render_template("dev_api_test.html", results=results)
+
+
+# ---------------------------------------------------------------------------
 # API proxy (for JS calls)
 # ---------------------------------------------------------------------------
 

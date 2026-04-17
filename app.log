@@ -190,3 +190,39 @@
 12:09:24 INFO     * Detected change in 'C:\\Users\\deepak.chhabra\\SouledApr2026\\trademe\\client.py', reloading
 12:09:24 INFO     * Restarting with watchdog (windowsapi)
 12:09:24 INFO     * Restarting with watchdog (windowsapi)
+12:09:28 WARNING  * Debugger is active!
+12:09:28 WARNING  * Debugger is active!
+12:09:28 INFO     * Debugger PIN: 887-292-231
+12:09:28 INFO     * Debugger PIN: 887-292-231
+12:09:28 INFO    127.0.0.1 - - [17/Apr/2026 12:09:28] "GET /dev/logs/stream HTTP/1.1" 200 -
+12:09:28 INFO    127.0.0.1 - - [17/Apr/2026 12:09:28] "GET /dev/logs/stream HTTP/1.1" 200 -
+12:09:37 INFO    Orders fetched: status=All date_from=2024-04-17 date_to= total=0
+12:09:37 INFO    127.0.0.1 - - [17/Apr/2026 12:09:37] "GET /orders?status=All&page=1&rows=25 HTTP/1.1" 200 -
+12:09:37 INFO    127.0.0.1 - - [17/Apr/2026 12:09:37] "GET /orders?status=All&page=1&rows=25 HTTP/1.1" 200 -
+12:09:38 INFO    127.0.0.1 - - [17/Apr/2026 12:09:38] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+12:09:38 INFO    127.0.0.1 - - [17/Apr/2026 12:09:38] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+12:09:45 INFO    Orders fetched: status=All date_from=2024-04-17 date_to=2026-04-17 total=0
+12:09:45 INFO    127.0.0.1 - - [17/Apr/2026 12:09:45] "GET /orders?status=All&date_from=2024-04-17&date_to=2026-04-17 HTTP/1.1" 200 -
+12:09:45 INFO    127.0.0.1 - - [17/Apr/2026 12:09:45] "GET /orders?status=All&date_from=2024-04-17&date_to=2026-04-17 HTTP/1.1" 200 -
+12:09:45 INFO    127.0.0.1 - - [17/Apr/2026 12:09:45] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+12:09:45 INFO    127.0.0.1 - - [17/Apr/2026 12:09:45] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+12:09:49 INFO    127.0.0.1 - - [17/Apr/2026 12:09:49] "GET /listings HTTP/1.1" 200 -
+12:09:49 INFO    127.0.0.1 - - [17/Apr/2026 12:09:49] "GET /listings HTTP/1.1" 200 -
+12:09:49 INFO    127.0.0.1 - - [17/Apr/2026 12:09:49] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+12:09:49 INFO    127.0.0.1 - - [17/Apr/2026 12:09:49] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+12:09:51 INFO    127.0.0.1 - - [17/Apr/2026 12:09:51] "GET /listings?status=Unsold&page=1&rows=25 HTTP/1.1" 200 -
+12:09:51 INFO    127.0.0.1 - - [17/Apr/2026 12:09:51] "GET /listings?status=Unsold&page=1&rows=25 HTTP/1.1" 200 -
+12:09:52 INFO    127.0.0.1 - - [17/Apr/2026 12:09:52] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+12:09:52 INFO    127.0.0.1 - - [17/Apr/2026 12:09:52] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+12:09:52 INFO    127.0.0.1 - - [17/Apr/2026 12:09:52] "GET /listings?status=Sold&page=1&rows=25 HTTP/1.1" 200 -
+12:09:52 INFO    127.0.0.1 - - [17/Apr/2026 12:09:52] "GET /listings?status=Sold&page=1&rows=25 HTTP/1.1" 200 -
+12:09:53 INFO    127.0.0.1 - - [17/Apr/2026 12:09:53] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+12:09:53 INFO    127.0.0.1 - - [17/Apr/2026 12:09:53] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+12:09:53 INFO    127.0.0.1 - - [17/Apr/2026 12:09:53] "GET /listings?status=Withdrawn&page=1&rows=25 HTTP/1.1" 200 -
+12:09:53 INFO    127.0.0.1 - - [17/Apr/2026 12:09:53] "GET /listings?status=Withdrawn&page=1&rows=25 HTTP/1.1" 200 -
+12:09:54 INFO    127.0.0.1 - - [17/Apr/2026 12:09:54] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+12:09:54 INFO    127.0.0.1 - - [17/Apr/2026 12:09:54] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+12:09:55 INFO    127.0.0.1 - - [17/Apr/2026 12:09:55] "GET /listings?status=Expired&page=1&rows=25 HTTP/1.1" 200 -
+12:09:55 INFO    127.0.0.1 - - [17/Apr/2026 12:09:55] "GET /listings?status=Expired&page=1&rows=25 HTTP/1.1" 200 -
+12:09:55 INFO    127.0.0.1 - - [17/Apr/2026 12:09:55] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+12:09:55 INFO    127.0.0.1 - - [17/Apr/2026 12:09:55] "[36mGET /static/style.css HTTP/1.1[0m" 304 -

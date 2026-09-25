@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="en-NZ">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Compare the cost of your current NZ electricity plan with a specific alternative quote using your own rates and usage.">
+<title>NZ Power Bill vs Quote Cost Checker | Worth Unpacked</title>
+<style>
+:root{
+  --bg:#f5f7fa; --card:#ffffff; --ink:#172033; --muted:#667085;
+  --line:#d8dee8; --accent:#f1a72b; --navy:#14213d;
+  --good:#176b45; --bad:#9c2f2f; --soft:#eef2f7;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--ink);line-height:1.45}
+header{background:var(--navy);color:white;padding:28px 18px}
+.wrap{max-width:1040px;margin:0 auto}
+.brand{font-size:.83rem;letter-spacing:.12em;text-transform:uppercase;font-weight:800;color:#ffd27a}
+h1{margin:.3rem 0 .45rem;font-size:clamp(1.85rem,4vw,3.2rem);line-height:1.05}
+header p{max-width:760px;margin:0;color:#d9e0ee}
+main{padding:24px 18px 48px}
+.notice{background:#fff6e5;border:1px solid #f0c66e;border-radius:14px;padding:14px 16px;margin-bottom:18px;font-size:.94rem}
+.section-title{margin:28px 0 12px;font-size:1.15rem}
+.shared,.plans,.results{display:grid;gap:16px}
+.shared{grid-template-columns:repeat(2,minmax(0,1fr))}
+.plans{grid-template-columns:repeat(2,minmax(0,1fr))}
+.results{grid-template-columns:repeat(4,minmax(0,1fr));margin-top:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;box-shadow:0 2px 8px rgba(20,33,61,.04)}
+.card h2{margin:0 0 4px;font-size:1.22rem}
+.small{font-size:.86rem;color:var(--muted)}
+label{display:block;font-size:.86rem;font-weight:700;margin-top:14px}
+input,select{width:100%;margin-top:6px;border:1px solid #bfc8d5;border-radius:10px;padding:11px 12px;font:inherit;background:white;color:var(--ink)}
+input:focus,select:focus{outline:3px solid rgba(241,167,43,.22);border-color:#c37b00}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.mode-fields[hidden]{display:none}
+.result-card{background:var(--navy);color:white;border-radius:16px;padding:16px}
+.result-label{font-size:.78rem;color:#c9d3e3;text-transform:uppercase;letter-spacing:.07em}
+.result-value{font-size:1.55rem;font-weight:850;margin-top:3px}
+.hero-result{margin-top:16px;padding:22px;border-radius:18px;background:var(--card);border:2px solid var(--navy)}
+.hero-result.good{border-color:var(--good)}
+.hero-result.bad{border-color:var(--bad)}
+.hero-result h2{margin:0;font-size:clamp(1.35rem,3vw,2rem)}
+.hero-result p{margin:.4rem 0 0;color:var(--muted)}
+.bar{height:13px;border-radius:999px;background:var(--soft);overflow:hidden;margin-top:14px}
+.bar > div{height:100%;background:var(--accent);width:0;transition:width .25s ease}
+.details{margin-top:16px;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+table{width:100%;border-collapse:collapse;font-size:.93rem}
+th,td{text-align:right;padding:9px 7px;border-bottom:1px solid var(--line)}
+th:first-child,td:first-child{text-align:left}
+th{font-size:.8rem;color:var(--muted)}
+footer{max-width:1040px;margin:0 auto;padding:0 18px 42px;color:var(--muted);font-size:.84rem}
+button{border:0;border-radius:10px;padding:11px 15px;background:var(--navy);color:#fff;font-weight:800;cursor:pointer}
+button.secondary{background:#e9edf3;color:var(--ink)}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+@media(max-width:780px){
+  .shared,.plans,.details{grid-template-columns:1fr}
+  .results{grid-template-columns:1fr 1fr}
+}
+@media(max-width:460px){.results{grid-template-columns:1fr}.row{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="brand">Worth Unpacked</div>
+    <h1>NZ Power Bill vs Quote Cost Checker</h1>
+    <p>Put your current plan beside one specific alternative quote and see the estimated cost difference using your own usage and rates.</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="notice">
+    <strong>Comparison aid, not a whole-of-market service.</strong>
+    This checker compares the figures you enter. It does not search every NZ retailer or identify the cheapest plan.
+    Keep GST treatment consistent and check eligibility, meter requirements, contract terms and break fees before switching.
+  </div>
+
+  <h2 class="section-title">Your comparison period</h2>
+  <section class="shared">
+    <div class="card">
+      <label for="annualUsage">Annual electricity usage (kWh)</label>
+      <input id="annualUsage" type="number" min="0" step="1" value="8000">
+      <div class="small">Use a recent 12-month total if you have it.</div>
+    </div>
+    <div class="card">
+      <label for="days">Days in comparison period</label>
+      <input id="days" type="number" min="1" max="366" step="1" value="365">
+      <div class="small">Usage is prorated from the annual figure when the period is shorter than a year.</div>
+    </div>
+  </section>
+
+  <h2 class="section-title">Enter both plans</h2>
+  <section class="plans">
+    <div class="card" id="currentCard">
+      <h2>Current plan</h2>
+      <div class="small">Your baseline.</div>
+
+      <label for="currentDaily">Daily fixed charge incl. GST (NZD/day)</label>
+      <input id="currentDaily" type="number" min="0" step="0.0001" value="2.00">
+
+      <label for="currentMode">Usage pricing</label>
+      <select id="currentMode">
+        <option value="anytime">Anytime / single rate</option>
+        <option value="tou">Peak + off-peak</option>
+      </select>
+
+      <div id="currentAnytime" class="mode-fields">
+        <label for="currentAnytimeRate">Anytime unit rate incl. GST (NZD/kWh)</label>
+        <input id="currentAnytimeRate" type="number" min="0" step="0.0001" value="0.30">
+      </div>
+
+      <div id="currentTou" class="mode-fields" hidden>
+        <label for="currentPeakShare">Peak usage share (%)</label>
+        <input id="currentPeakShare" type="number" min="0" max="100" step="1" value="50">
+        <div class="row">
+          <div>
+            <label for="currentPeakRate">Peak rate (NZD/kWh)</label>
+            <input id="currentPeakRate" type="number" min="0" step="0.0001" value="0.35">
+          </div>
+          <div>
+            <label for="currentOffPeakRate">Off-peak rate (NZD/kWh)</label>
+            <input id="currentOffPeakRate" type="number" min="0" step="0.0001" value="0.20">
+          </div>
+        </div>
+      </div>
+
+      <label for="currentCredits">Expected annual credits / discounts incl. GST (NZD)</label>
+      <input id="currentCredits" type="number" min="0" step="0.01" value="0">
+
+      <label for="currentOther">Other annual charges incl. GST (NZD)</label>
+      <input id="currentOther" type="number" step="0.01" value="0">
+    </div>
+
+    <div class="card" id="alternativeCard">
+      <h2>Alternative quote</h2>
+      <div class="small">The specific plan or quote you are considering.</div>
+
+      <label for="altDaily">Daily fixed charge incl. GST (NZD/day)</label>
+      <input id="altDaily" type="number" min="0" step="0.0001" value="1.80">
+
+      <label for="altMode">Usage pricing</label>
+      <select id="altMode">
+        <option value="anytime">Anytime / single rate</option>
+        <option value="tou">Peak + off-peak</option>
+      </select>
+
+      <div id="altAnytime" class="mode-fields">
+        <label for="altAnytimeRate">Anytime unit rate incl. GST (NZD/kWh)</label>
+        <input id="altAnytimeRate" type="number" min="0" step="0.0001" value="0.28">
+      </div>
+
+      <div id="altTou" class="mode-fields" hidden>
+        <label for="altPeakShare">Peak usage share (%)</label>
+        <input id="altPeakShare" type="number" min="0" max="100" step="1" value="50">
+        <div class="row">
+          <div>
+            <label for="altPeakRate">Peak rate (NZD/kWh)</label>
+            <input id="altPeakRate" type="number" min="0" step="0.0001" value="0.32">
+          </div>
+          <div>
+            <label for="altOffPeakRate">Off-peak rate (NZD/kWh)</label>
+            <input id="altOffPeakRate" type="number" min="0" step="0.0001" value="0.19">
+          </div>
+        </div>
+      </div>
+
+      <label for="altCredits">Expected annual credits / discounts incl. GST (NZD)</label>
+      <input id="altCredits" type="number" min="0" step="0.01" value="0">
+
+      <label for="altOther">Other annual charges incl. GST (NZD)</label>
+      <input id="altOther" type="number" step="0.01" value="0">
+
+      <label for="switchFee">One-off break / switching fee (NZD)</label>
+      <input id="switchFee" type="number" min="0" step="0.01" value="0">
+    </div>
+  </section>
+
+  <h2 class="section-title">Result</h2>
+  <section class="results">
+    <div class="result-card"><div class="result-label">Current cost</div><div class="result-value" id="currentTotal">$0</div></div>
+    <div class="result-card"><div class="result-label">Alternative cost</div><div class="result-value" id="altTotal">$0</div></div>
+    <div class="result-card"><div class="result-label">Difference</div><div class="result-value" id="savings">$0</div></div>
+    <div class="result-card"><div class="result-label">Monthly equivalent</div><div class="result-value" id="monthly">$0</div></div>
+  </section>
+
+  <section class="hero-result" id="signalBox">
+    <h2 id="signal">Enter your figures to compare plans.</h2>
+    <p id="signalSub"></p>
+    <div class="bar"><div id="savingBar"></div></div>
+  </section>
+
+  <section class="details">
+    <div class="card">
+      <h2>Cost breakdown</h2>
+      <table>
+        <thead><tr><th>Component</th><th>Current</th><th>Alternative</th></tr></thead>
+        <tbody>
+          <tr><td>Fixed charge</td><td id="curFixed"></td><td id="altFixed"></td></tr>
+          <tr><td>Usage</td><td id="curUsage"></td><td id="altUsage"></td></tr>
+          <tr><td>Credits / discounts</td><td id="curCreditsOut"></td><td id="altCreditsOut"></td></tr>
+          <tr><td>Other charges</td><td id="curOtherOut"></td><td id="altOtherOut"></td></tr>
+          <tr><td>Switch / break fee</td><td>$0.00</td><td id="feeOut"></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <h2>Before you switch</h2>
+      <ul>
+        <li>Use rates from your latest bill and the actual retailer quote.</li>
+        <li>Keep GST treatment consistent across both plans.</li>
+        <li>Only include credits you reasonably expect to receive.</li>
+        <li>For time-of-use plans, estimate your peak-use share carefully.</li>
+        <li>Check eligibility, smart-meter requirements, controlled-load/EV rates and contract terms.</li>
+      </ul>
+      <div class="actions">
+        <button type="button" id="resetBtn" class="secondary">Reset example</button>
+        <button type="button" id="printBtn">Print / save result</button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <strong>Worth Unpacked.</strong> This tool is for comparison and educational purposes only. It does not provide financial advice or a recommendation to switch electricity providers.
+</footer>
+
+<script>
+const $ = id => document.getElementById(id);
+const money = n => new Intl.NumberFormat('en-NZ',{style:'currency',currency:'NZD',maximumFractionDigits:2}).format(Number.isFinite(n)?n:0);
+const num = id => Math.max(0, parseFloat($(id).value) || 0);
+
+function toggleMode(prefix){
+  const mode = $(prefix+'Mode').value;
+  $(prefix+'Anytime').hidden = mode !== 'anytime';
+  $(prefix+'Tou').hidden = mode !== 'tou';
+}
+
+function plan(prefix, usageForPeriod, days, isAlternative=false){
+  const daily = num(prefix+'Daily');
+  const mode = $(prefix+'Mode').value;
+  let usageCost = 0;
+  if(mode === 'tou'){
+    const share = Math.min(100, num(prefix+'PeakShare'))/100;
+    const peak = num(prefix+'PeakRate');
+    const off = num(prefix+'OffPeakRate');
+    usageCost = usageForPeriod * ((share*peak)+((1-share)*off));
+  } else {
+    usageCost = usageForPeriod * num(prefix+'AnytimeRate');
+  }
+  const fixed = daily * days;
+  const periodFactor = days / 365;
+  const credits = num(prefix+'Credits') * periodFactor;
+  const other = num(prefix+'Other') * periodFactor;
+  const fee = isAlternative ? num('switchFee') : 0;
+  const total = fixed + usageCost - credits + other + fee;
+  return {fixed, usageCost, credits, other, fee, total:Math.max(0,total)};
+}
+
+function calculate(){
+  const annualUsage = num('annualUsage');
+  const days = Math.min(366, Math.max(1, num('days') || 365));
+  const usageForPeriod = annualUsage * (days/365);
+
+  const cur = plan('current', usageForPeriod, days, false);
+  const alt = plan('alt', usageForPeriod, days, true);
+  const save = cur.total - alt.total;
+  const pct = cur.total > 0 ? (save / cur.total) * 100 : 0;
+  const monthly = save * (30.4375 / days);
+
+  $('currentTotal').textContent = money(cur.total);
+  $('altTotal').textContent = money(alt.total);
+  $('savings').textContent = (save >= 0 ? '+' : '−') + money(Math.abs(save));
+  $('monthly').textContent = (monthly >= 0 ? '+' : '−') + money(Math.abs(monthly));
+
+  $('curFixed').textContent = money(cur.fixed);
+  $('altFixed').textContent = money(alt.fixed);
+  $('curUsage').textContent = money(cur.usageCost);
+  $('altUsage').textContent = money(alt.usageCost);
+  $('curCreditsOut').textContent = '−' + money(cur.credits);
+  $('altCreditsOut').textContent = '−' + money(alt.credits);
+  $('curOtherOut').textContent = money(cur.other);
+  $('altOtherOut').textContent = money(alt.other);
+  $('feeOut').textContent = money(alt.fee);
+
+  const box = $('signalBox');
+  box.classList.remove('good','bad');
+  if(save > 0.005){
+    box.classList.add('good');
+    $('signal').textContent = `The alternative is cheaper by ${money(save)} over ${days} days.`;
+    $('signalSub').textContent = `${pct.toFixed(1)}% lower than the current-plan estimate, about ${money(monthly)} per month equivalent.`;
+  } else if(save < -0.005){
+    box.classList.add('bad');
+    $('signal').textContent = `The alternative costs ${money(Math.abs(save))} more over ${days} days.`;
+    $('signalSub').textContent = `${Math.abs(pct).toFixed(1)}% higher than the current-plan estimate.`;
+  } else {
+    $('signal').textContent = `The two estimates are effectively the same over ${days} days.`;
+    $('signalSub').textContent = 'Check non-price conditions before deciding.';
+  }
+  const maxBase = Math.max(cur.total, alt.total, 1);
+  $('savingBar').style.width = `${Math.min(100, Math.abs(save)/maxBase*100)}%`;
+}
+
+function resetExample(){
+  const vals = {
+    annualUsage:8000,days:365,currentDaily:2,currentMode:'anytime',currentAnytimeRate:.30,
+    currentPeakShare:50,currentPeakRate:.35,currentOffPeakRate:.20,currentCredits:0,currentOther:0,
+    altDaily:1.8,altMode:'anytime',altAnytimeRate:.28,altPeakShare:50,altPeakRate:.32,
+    altOffPeakRate:.19,altCredits:0,altOther:0,switchFee:0
+  };
+  Object.entries(vals).forEach(([id,v])=>$(id).value=v);
+  toggleMode('current'); toggleMode('alt'); calculate();
+}
+
+document.querySelectorAll('input,select').forEach(el=>el.addEventListener('input',()=>{
+  if(el.id==='currentMode') toggleMode('current');
+  if(el.id==='altMode') toggleMode('alt');
+  calculate();
+}));
+$('resetBtn').addEventListener('click',resetExample);
+$('printBtn').addEventListener('click',()=>window.print());
+toggleMode('current'); toggleMode('alt'); calculate();
+</script>
+</body>
+</html>
